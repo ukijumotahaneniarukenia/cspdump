@@ -46,25 +46,25 @@ $ time echo linux-x64 osx.10.14-x64 win10-x64 | xargs -n1 | xargs -t -I@ dotnet 
 
 $ rm -rf $HOME/media/*
 
-$ find -type f | grep -P cspdump | grep Release| grep publish |teip -Gog '(?<!\.[a-zA-Z]+)$|exe$' -- awk '{print $1,1}' | grep 1$| awk '$0=$1' | ruby -F'/' -anle 'p $F[4],$_'|xargs -n2|awk '{print "mkdir -p $HOME/media/"$1"; cp "$2" $HOME/media/"$1"/"}' | bash
+$ find -type f | grep -P cspdump | grep Release| grep publish |teip -Gog '(?<!\.[a-zA-Z]+)$|exe$' -- awk '{print $1,1}' | grep 1$| awk '$0=$1' | ruby -F'/' -anle 'p $F[4],$_'|xargs -n2|awk '{print "mkdir -p $HOME/media/"$1"; cp "$2" $HOME/media/"$1"/cspdump-"$1}' | bash
+
 
 $ tree -ugh $HOME/media
 /home/aine/media
 ├── [aine     aine     4.0K]  linux-x64
-│   └── [aine     aine      35M]  cspdump
+│   └── [aine     aine      35M]  cspdump-linux-x64
 ├── [aine     aine     4.0K]  osx.10.14-x64
-│   └── [aine     aine      31M]  cspdump
+│   └── [aine     aine      31M]  cspdump-osx.10.14-x64
 └── [aine     aine     4.0K]  win10-x64
-    └── [aine     aine      26M]  cspdump.exe
+    └── [aine     aine      26M]  cspdump-win10-x64
 
 3 directories, 3 files
-
 
 ビルドホストで動作確認
 $ cd $HOME/media/linux-x64
 
 
-$ ./cspdump 
+$ ./cspdump-linux-x64 
 
 
 Default: --internal-lib mode
@@ -101,7 +101,7 @@ CMD: cspdump System.DateTime System.Text.NormalizationForm System.Text.Rune --me
 
 ないとこうなる
 
-$ ./cspdump --external-lib Newtonsoft.Json --method-static
+$ ./cspdump-linux-x64  --external-lib Newtonsoft.Json --method-static
 Unhandled exception. System.IO.FileNotFoundException: Could not load file or assembly 'Newtonsoft.Json, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
 
 File name: 'Newtonsoft.Json, Culture=neutral, PublicKeyToken=null'
@@ -117,7 +117,7 @@ Aborted (core dumped)
 
 標準ライブラリは行ける
 
-$ ./cspdump System.DateTime System.Text.NormalizationForm
+$ ./cspdump-linux-x64  System.DateTime System.Text.NormalizationForm
 アセンブリ名	名前空間名	型名	インスタンスプロパティ名	インスタンスプロパティ名の戻り値の型名
 System.Private.CoreLib	System	System.DateTime	Date	System.DateTime
 System.Private.CoreLib	System	System.DateTime	Day	Int32
