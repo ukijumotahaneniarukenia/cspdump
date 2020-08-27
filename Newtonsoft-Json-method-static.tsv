@@ -1,0 +1,377 @@
+アセンブリ名	名前空間名	型名	スタティックメソッド名	スタティックメソッドの戻り値の型名	スタティックメソッドの仮引数の個数	スタティックメソッドの仮引数の位置番号	スタティックメソッドの仮引数の変数名	スタティックメソッドの仮引数の型名
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	get_DefaultSettings	System.Func`1[[Newtonsoft.Json.JsonSerializerSettings, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	set_DefaultSettings	System.Void	1	0	value	Func`1
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	DateTime
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	3	0,1,2	value,format,timeZoneHandling	DateTime,DateFormatHandling,DateTimeZoneHandling
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	DateTimeOffset
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	2	0,1	value,format	DateTimeOffset,DateFormatHandling
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Char
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Enum
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Int32
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Int16
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	UInt16
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	UInt32
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Int64
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	UInt64
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Single
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Double
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Byte
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	SByte
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Decimal
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Guid
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	TimeSpan
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Uri
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	2	0,1	value,delimiter	String,Char
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	3	0,1,2	value,delimiter,stringEscapeHandling	String,Char,StringEscapeHandling
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	ToString	System.String	1	0	value	Object
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	1	0	value	Object
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	2	0,1	value,formatting	Object,Formatting
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	2	0,1	value,converters	Object,JsonConverter[]
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	3	0,1,2	value,formatting,converters	Object,Formatting,JsonConverter[]
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	2	0,1	value,settings	Object,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	3	0,1,2	value,type,settings	Object,Type,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	3	0,1,2	value,formatting,settings	Object,Formatting,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeObject	System.String	4	0,1,2,3	value,type,formatting,settings	Object,Type,Formatting,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject	System.Object	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject	System.Object	2	0,1	value,settings	String,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject	System.Object	2	0,1	value,type	String,Type
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject		1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeAnonymousType		2	0,1	value,anonymousTypeObject	String,T
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeAnonymousType		3	0,1,2	value,anonymousTypeObject,settings	String,T,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject		2	0,1	value,converters	String,JsonConverter[]
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject		2	0,1	value,settings	String,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject	System.Object	3	0,1,2	value,type,converters	String,Type,JsonConverter[]
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeObject	System.Object	3	0,1,2	value,type,settings	String,Type,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	PopulateObject	System.Void	2	0,1	value,target	String,Object
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	PopulateObject	System.Void	3	0,1,2	value,target,settings	String,Object,JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXmlNode	System.String	1	0	node	XmlNode
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXmlNode	System.String	2	0,1	node,formatting	XmlNode,Formatting
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXmlNode	System.String	3	0,1,2	node,formatting,omitRootObject	XmlNode,Formatting,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXmlNode	System.Xml.XmlDocument	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXmlNode	System.Xml.XmlDocument	2	0,1	value,deserializeRootElementName	String,String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXmlNode	System.Xml.XmlDocument	3	0,1,2	value,deserializeRootElementName,writeArrayAttribute	String,String,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXmlNode	System.Xml.XmlDocument	4	0,1,2,3	value,deserializeRootElementName,writeArrayAttribute,encodeSpecialCharacters	String,String,Boolean,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXNode	System.String	1	0	node	XObject
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXNode	System.String	2	0,1	node,formatting	XObject,Formatting
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	SerializeXNode	System.String	3	0,1,2	node,formatting,omitRootObject	XObject,Formatting,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXNode	System.Xml.Linq.XDocument	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXNode	System.Xml.Linq.XDocument	2	0,1	value,deserializeRootElementName	String,String
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXNode	System.Xml.Linq.XDocument	3	0,1,2	value,deserializeRootElementName,writeArrayAttribute	String,String,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonConvert	DeserializeXNode	System.Xml.Linq.XDocument	4	0,1,2,3	value,deserializeRootElementName,writeArrayAttribute,encodeSpecialCharacters	String,String,Boolean,Boolean
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonSerializer	Create	Newtonsoft.Json.JsonSerializer	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonSerializer	Create	Newtonsoft.Json.JsonSerializer	1	0	settings	JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonSerializer	CreateDefault	Newtonsoft.Json.JsonSerializer	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json	Newtonsoft.Json.JsonSerializer	CreateDefault	Newtonsoft.Json.JsonSerializer	1	0	settings	JsonSerializerSettings
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	CancelIfRequestedAsync	System.Threading.Tasks.Task	1	0	cancellationToken	CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	CancelIfRequestedAsync		1	0	cancellationToken	CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	FromCanceled	System.Threading.Tasks.Task	1	0	cancellationToken	CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	FromCanceled		1	0	cancellationToken	CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	WriteAsync	System.Threading.Tasks.Task	3	0,1,2	writer,value,cancellationToken	TextWriter,Char,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	WriteAsync	System.Threading.Tasks.Task	3	0,1,2	writer,value,cancellationToken	TextWriter,String,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	WriteAsync	System.Threading.Tasks.Task	5	0,1,2,3,4	writer,value,start,count,cancellationToken	TextWriter,Char[],Int32,Int32,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	ReadAsync	System.Threading.Tasks.Task`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	5	0,1,2,3,4	reader,buffer,index,count,cancellationToken	TextReader,Char[],Int32,Int32,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.AsyncUtils	IsCompletedSucessfully	System.Boolean	1	0	task	Task
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	IsNullOrEmpty	System.Boolean	1	0	collection	ICollection`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	AddRange	System.Void	2	0,1	initial,collection	IList`1,IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	IsDictionaryType	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	ResolveEnumerableCollectionConstructor	System.Reflection.ConstructorInfo	2	0,1	collectionType,collectionItemType	Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	ResolveEnumerableCollectionConstructor	System.Reflection.ConstructorInfo	3	0,1,2	collectionType,collectionItemType,constructorArgumentType	Type,Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	AddDistinct	System.Boolean	2	0,1	list,value	IList`1,T
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	AddDistinct	System.Boolean	3	0,1,2	list,value,comparer	IList`1,T,IEqualityComparer`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	ContainsValue	System.Boolean	3	0,1,2	source,value,comparer	IEnumerable`1,TSource,IEqualityComparer`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	AddRangeDistinct	System.Boolean	3	0,1,2	list,values,comparer	IList`1,IEnumerable`1,IEqualityComparer`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	IndexOf	System.Int32	2	0,1	collection,predicate	IEnumerable`1,Func`2
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	Contains	System.Boolean	3	0,1,2	list,value,comparer	List`1,T,IEqualityComparer
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	IndexOfReference	System.Int32	2	0,1	list,item	List`1,T
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	FastReverse	System.Void	1	0	list	List`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	ToMultidimensionalArray	System.Array	3	0,1,2	values,type,rank	IList,Type,Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.CollectionUtils	ArrayEmpty		0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	GetTypeCode	Newtonsoft.Json.Utilities.PrimitiveTypeCode	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	GetTypeCode	Newtonsoft.Json.Utilities.PrimitiveTypeCode	2	0,1	t,isEnum	Type,Boolean&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	GetTypeInformation	Newtonsoft.Json.Utilities.TypeInformation	1	0	convertable	IConvertible
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	IsConvertible	System.Boolean	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	ParseTimeSpan	System.TimeSpan	1	0	input	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	FromBigInteger	System.Object	2	0,1	i,targetType	BigInteger,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	Convert	System.Object	3	0,1,2	initialValue,culture,targetType	Object,CultureInfo,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	ConvertOrCast	System.Object	3	0,1,2	initialValue,culture,targetType	Object,CultureInfo,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	VersionTryParse	System.Boolean	2	0,1	input,result	String,Version&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	IsInteger	System.Boolean	1	0	value	Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	Int32TryParse	Newtonsoft.Json.Utilities.ParseResult	4	0,1,2,3	chars,start,length,value	Char[],Int32,Int32,Int32&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	Int64TryParse	Newtonsoft.Json.Utilities.ParseResult	4	0,1,2,3	chars,start,length,value	Char[],Int32,Int32,Int64&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	DecimalTryParse	Newtonsoft.Json.Utilities.ParseResult	4	0,1,2,3	chars,start,length,value	Char[],Int32,Int32,Decimal&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	TryConvertGuid	System.Boolean	2	0,1	s,g	String,Guid&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ConvertUtils	TryHexTextToInt	System.Boolean	4	0,1,2,3	text,start,end,value	Char[],Int32,Int32,Int32&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.DateTimeUtils	GetUtcOffset	System.TimeSpan	1	0	d	DateTime
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.DateTimeUtils	ToSerializationMode	System.Xml.XmlDateTimeSerializationMode	1	0	kind	DateTimeKind
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.DynamicUtils	GetDynamicMemberNames	System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	dynamicProvider	IDynamicMetaObjectProvider
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.EnumUtils	GetFlagsValues		1	0	value	T
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.EnumUtils	TryToString	System.Boolean	4	0,1,2,3	enumType,value,camelCase,name	Type,Object,Boolean,String&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.EnumUtils	TryToString	System.Boolean	4	0,1,2,3	enumType,value,namingStrategy,name	Type,Object,NamingStrategy,String&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.EnumUtils	GetEnumValuesAndNames	Newtonsoft.Json.Utilities.EnumInfo	1	0	enumType	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.EnumUtils	ParseEnum	System.Object	4	0,1,2,3	enumType,namingStrategy,value,disallowNumber	Type,NamingStrategy,String,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.FSharpUtils	get_Instance	Newtonsoft.Json.Utilities.FSharpUtils	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.FSharpUtils	EnsureInitialized	System.Void	1	0	fsharpCoreAssembly	Assembly
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.BufferUtils	RentBuffer	System.Char[]	2	0,1	bufferPool,minSize	IArrayPool`1,Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.BufferUtils	ReturnBuffer	System.Void	2	0,1	bufferPool,buffer	IArrayPool`1,Char[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.BufferUtils	EnsureBufferSize	System.Char[]	3	0,1,2	bufferPool,size,buffer	IArrayPool`1,Int32,Char[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	GetCharEscapeFlags	System.Boolean[]	2	0,1	stringEscapeHandling,quoteChar	StringEscapeHandling,Char
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	ShouldEscapeJavaScriptString	System.Boolean	2	0,1	s,charEscapeFlags	String,Boolean[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	WriteEscapedJavaScriptString	System.Void	8	0,1,2,3,4,5,6,7	writer,s,delimiter,appendDelimiters,charEscapeFlags,stringEscapeHandling,bufferPool,writeBuffer	TextWriter,String,Char,Boolean,Boolean[],StringEscapeHandling,IArrayPool`1,Char[]&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	ToEscapedJavaScriptString	System.String	4	0,1,2,3	value,delimiter,appendDelimiters,stringEscapeHandling	String,Char,Boolean,StringEscapeHandling
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	WriteEscapedJavaScriptStringAsync	System.Threading.Tasks.Task	9	0,1,2,3,4,5,6,7,8	writer,s,delimiter,appendDelimiters,charEscapeFlags,stringEscapeHandling,client,writeBuffer,cancellationToken	TextWriter,String,Char,Boolean,Boolean[],StringEscapeHandling,JsonTextWriter,Char[],CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	WriteCharAsync	System.Threading.Tasks.Task	4	0,1,2,3	task,writer,c,cancellationToken	Task,TextWriter,Char,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.JavaScriptUtils	TryGetDateFromConstructorJson	System.Boolean	3	0,1,2	reader,dateTime,errorMessage	JsonReader,DateTime&,String&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	IntLength	System.Int32	1	0	i	UInt64
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	IntToHex	System.Char	1	0	n	Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	Min	System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	val1,val2	Nullable`1,Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	Max	System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	val1,val2	Nullable`1,Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	Max	System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	val1,val2	Nullable`1,Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MathUtils	ApproxEquals	System.Boolean	2	0,1	d1,d2	Double,Double
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	Assert	System.Void	2	0,1	condition,message	Boolean,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	ValueEquals	System.Boolean	2	0,1	objA,objB	Object,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	CreateArgumentOutOfRangeException	System.ArgumentOutOfRangeException	3	0,1,2	paramName,actualValue,message	String,Object,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	ToString	System.String	1	0	value	Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	ByteArrayCompare	System.Int32	2	0,1	a1,a2	Byte[],Byte[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	GetPrefix	System.String	1	0	qualifiedName	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	GetLocalName	System.String	1	0	qualifiedName	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.MiscellaneousUtils	GetQualifiedNameParts	System.Void	3	0,1,2	qualifiedName,prefix,localName	String,String&,String&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionObject	Create	Newtonsoft.Json.Utilities.ReflectionObject	2	0,1	t,memberNames	Type,String[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionObject	Create	Newtonsoft.Json.Utilities.ReflectionObject	3	0,1,2	t,creator,memberNames	Type,MethodBase,String[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsVirtual	System.Boolean	1	0	propertyInfo	PropertyInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetBaseDefinition	System.Reflection.MethodInfo	1	0	propertyInfo	PropertyInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsPublic	System.Boolean	1	0	property	PropertyInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetObjectType	System.Type	1	0	v	Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetTypeName	System.String	3	0,1,2	t,assemblyFormat,binder	Type,TypeNameAssemblyFormatHandling,ISerializationBinder
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	HasDefaultConstructor	System.Boolean	2	0,1	t,nonPublic	Type,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetDefaultConstructor	System.Reflection.ConstructorInfo	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetDefaultConstructor	System.Reflection.ConstructorInfo	2	0,1	t,nonPublic	Type,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsNullable	System.Boolean	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsNullableType	System.Boolean	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	EnsureNotNullableType	System.Type	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	EnsureNotByRefType	System.Type	1	0	t	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsGenericDefinition	System.Boolean	2	0,1	type,genericInterfaceDefinition	Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	ImplementsGenericDefinition	System.Boolean	2	0,1	type,genericInterfaceDefinition	Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	ImplementsGenericDefinition	System.Boolean	3	0,1,2	type,genericInterfaceDefinition,implementingType	Type,Type,Type&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	InheritsGenericDefinition	System.Boolean	2	0,1	type,genericClassDefinition	Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	InheritsGenericDefinition	System.Boolean	3	0,1,2	type,genericClassDefinition,implementingType	Type,Type,Type&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetCollectionItemType	System.Type	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetDictionaryKeyValueTypes	System.Void	3	0,1,2	dictionaryType,keyType,valueType	Type,Type&,Type&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetMemberUnderlyingType	System.Type	1	0	member	MemberInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsByRefLikeType	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsIndexedProperty	System.Boolean	1	0	property	PropertyInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetMemberValue	System.Object	2	0,1	member,target	MemberInfo,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	SetMemberValue	System.Void	3	0,1,2	member,target,value	MemberInfo,Object,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	CanReadMemberValue	System.Boolean	2	0,1	member,nonPublic	MemberInfo,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	CanSetMemberValue	System.Boolean	3	0,1,2	member,nonPublic,canSetReadOnly	MemberInfo,Boolean,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetFieldsAndProperties	System.Collections.Generic.List`1[[System.Reflection.MemberInfo, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	type,bindingAttr	Type,BindingFlags
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetAttribute		1	0	attributeProvider	Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetAttribute		2	0,1	attributeProvider,inherit	Object,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetAttributes		2	0,1	attributeProvider,inherit	Object,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetAttributes	System.Attribute[]	3	0,1,2	attributeProvider,attributeType,inherit	Object,Type,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	SplitFullyQualifiedTypeName	Newtonsoft.Json.Utilities.StructMultiKey`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	fullyQualifiedTypeName	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetMemberInfoFromType	System.Reflection.MemberInfo	2	0,1	targetType,memberInfo	Type,MemberInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetFields	System.Collections.Generic.IEnumerable`1[[System.Reflection.FieldInfo, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	targetType,bindingAttr	Type,BindingFlags
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetProperties	System.Collections.Generic.IEnumerable`1[[System.Reflection.PropertyInfo, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	2	0,1	targetType,bindingAttr	Type,BindingFlags
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	RemoveFlag	System.Reflection.BindingFlags	2	0,1	bindingAttr,flag	BindingFlags,BindingFlags
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	IsMethodOverridden	System.Boolean	3	0,1,2	currentType,methodDeclaringType,method	Type,Type,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ReflectionUtils	GetDefaultValue	System.Object	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringReferenceExtensions	IndexOf	System.Int32	4	0,1,2,3	s,c,startIndex,length	StringReference,Char,Int32,Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringReferenceExtensions	StartsWith	System.Boolean	2	0,1	s,text	StringReference,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringReferenceExtensions	EndsWith	System.Boolean	2	0,1	s,text	StringReference,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	IsNullOrEmpty	System.Boolean	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	FormatWith	System.String	3	0,1,2	format,provider,arg0	String,IFormatProvider,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	FormatWith	System.String	4	0,1,2,3	format,provider,arg0,arg1	String,IFormatProvider,Object,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	FormatWith	System.String	5	0,1,2,3,4	format,provider,arg0,arg1,arg2	String,IFormatProvider,Object,Object,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	FormatWith	System.String	6	0,1,2,3,4,5	format,provider,arg0,arg1,arg2,arg3	String,IFormatProvider,Object,Object,Object,Object
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	IsWhiteSpace	System.Boolean	1	0	s	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	CreateStringWriter	System.IO.StringWriter	1	0	capacity	Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	ToCharAsUnicode	System.Void	2	0,1	c,buffer	Char,Char[]
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	ForgivingCaseSensitiveFind		3	0,1,2	source,valueSelector,testValue	IEnumerable`1,Func`2,String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	ToCamelCase	System.String	1	0	s	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	ToSnakeCase	System.String	1	0	s	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	ToKebabCase	System.String	1	0	s	String
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	IsHighSurrogate	System.Boolean	1	0	c	Char
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	IsLowSurrogate	System.Boolean	1	0	c	Char
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	StartsWith	System.Boolean	2	0,1	source,value	String,Char
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	EndsWith	System.Boolean	2	0,1	source,value	String,Char
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.StringUtils	Trim	System.String	3	0,1,2	s,start,length	String,Int32,Int32
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	Method	System.Reflection.MethodInfo	1	0	d	Delegate
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	MemberType	System.Reflection.MemberTypes	1	0	memberInfo	MemberInfo
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	ContainsGenericParameters	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsInterface	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsGenericType	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsGenericTypeDefinition	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	BaseType	System.Type	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	Assembly	System.Reflection.Assembly	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsEnum	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsClass	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsSealed	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsAbstract	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsVisible	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsValueType	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	IsPrimitive	System.Boolean	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	AssignableToTypeName	System.Boolean	4	0,1,2,3	type,fullTypeName,searchInterfaces,match	Type,String,Boolean,Type&
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	AssignableToTypeName	System.Boolean	3	0,1,2	type,fullTypeName,searchInterfaces	Type,String,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.TypeExtensions	ImplementInterface	System.Boolean	2	0,1	type,interfaceType	Type,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.ValidationUtils	ArgumentNotNull	System.Void	2	0,1	value,parameterName	Object,String
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.CachedAttributeGetter`1	GetAttribute		1	0	type	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetCachedAttribute		1	0	attributeProvider	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	CanTypeDescriptorConvertString	System.Boolean	2	0,1	type,typeConverter	Type,TypeConverter&
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetDataContractAttribute	System.Runtime.Serialization.DataContractAttribute	1	0	type	Type
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetDataMemberAttribute	System.Runtime.Serialization.DataMemberAttribute	1	0	memberInfo	MemberInfo
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetObjectMemberSerialization	Newtonsoft.Json.MemberSerialization	2	0,1	objectType,ignoreSerializableAttribute	Type,Boolean
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetJsonConverter	Newtonsoft.Json.JsonConverter	1	0	attributeProvider	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	CreateJsonConverterInstance	Newtonsoft.Json.JsonConverter	2	0,1	converterType,args	Type,Object[]
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	CreateNamingStrategyInstance	Newtonsoft.Json.Serialization.NamingStrategy	2	0,1	namingStrategyType,args	Type,Object[]
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetContainerNamingStrategy	Newtonsoft.Json.Serialization.NamingStrategy	1	0	containerAttribute	JsonContainerAttribute
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	IsNonSerializable	System.Boolean	1	0	provider	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	IsSerializable	System.Boolean	1	0	provider	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	GetAttribute		1	0	provider	Object
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	get_DynamicCodeGeneration	System.Boolean	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	get_FullyTrusted	System.Boolean	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Serialization	Newtonsoft.Json.Serialization.JsonTypeReflector	get_ReflectionDelegateFactory	Newtonsoft.Json.Utilities.ReflectionDelegateFactory	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.Extensions	IsValid	System.Boolean	2	0,1	source,schema	JToken,JsonSchema
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.Extensions	IsValid	System.Boolean	3	0,1,2	source,schema,errorMessages	JToken,JsonSchema,IList`1&
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.Extensions	Validate	System.Void	2	0,1	source,schema	JToken,JsonSchema
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.Extensions	Validate	System.Void	3	0,1,2	source,schema,validationEventHandler	JToken,JsonSchema,ValidationEventHandler
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchema	Read	Newtonsoft.Json.Schema.JsonSchema	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchema	Read	Newtonsoft.Json.Schema.JsonSchema	2	0,1	reader,resolver	JsonReader,JsonSchemaResolver
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchema	Parse	Newtonsoft.Json.Schema.JsonSchema	1	0	json	String
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchema	Parse	Newtonsoft.Json.Schema.JsonSchema	2	0,1	json,resolver	String,JsonSchemaResolver
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchemaModel	Create	Newtonsoft.Json.Schema.JsonSchemaModel	1	0	schemata	IList`1
+Newtonsoft.Json	Newtonsoft.Json.Schema	Newtonsoft.Json.Schema.JsonSchemaNode	GetId	System.String	1	0	schemata	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Ancestors	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	AncestorsAndSelf	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Descendants	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	DescendantsAndSelf	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Properties	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JProperty, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Values	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	source,key	IEnumerable`1,Object
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Values	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Values		2	0,1	source,key	IEnumerable`1,Object
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Values		1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Value		1	0	value	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Value		1	0	value	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Children	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	Children		1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	AsJEnumerable	Newtonsoft.Json.Linq.IJEnumerable`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.Extensions	AsJEnumerable		1	0	source	IEnumerable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JArray, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JArray, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	Load	Newtonsoft.Json.Linq.JArray	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	Load	Newtonsoft.Json.Linq.JArray	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	Parse	Newtonsoft.Json.Linq.JArray	1	0	json	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	Parse	Newtonsoft.Json.Linq.JArray	2	0,1	json,settings	String,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	FromObject	Newtonsoft.Json.Linq.JArray	1	0	o	Object
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JArray	FromObject	Newtonsoft.Json.Linq.JArray	2	0,1	o,jsonSerializer	Object,JsonSerializer
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JConstructor	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JConstructor, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JConstructor	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JConstructor, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JConstructor	Load	Newtonsoft.Json.Linq.JConstructor	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JConstructor	Load	Newtonsoft.Json.Linq.JConstructor	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JObject, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JObject, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	Load	Newtonsoft.Json.Linq.JObject	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	Load	Newtonsoft.Json.Linq.JObject	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	Parse	Newtonsoft.Json.Linq.JObject	1	0	json	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	Parse	Newtonsoft.Json.Linq.JObject	2	0,1	json,settings	String,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	FromObject	Newtonsoft.Json.Linq.JObject	1	0	o	Object
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JObject	FromObject	Newtonsoft.Json.Linq.JObject	2	0,1	o,jsonSerializer	Object,JsonSerializer
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JProperty	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JProperty, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JProperty	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JProperty, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JProperty	Load	Newtonsoft.Json.Linq.JProperty	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JProperty	Load	Newtonsoft.Json.Linq.JProperty	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JRaw	CreateAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JRaw, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JRaw	Create	Newtonsoft.Json.Linq.JRaw	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	SByte
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Int64
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Int16
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	UInt16
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Int32
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	DateTime
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Decimal
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Double
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Single
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	UInt32
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	UInt64
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Byte[]
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Uri
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	TimeSpan
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Guid
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	FromObject	Newtonsoft.Json.Linq.JToken	1	0	o	Object
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	FromObject	Newtonsoft.Json.Linq.JToken	2	0,1	o,jsonSerializer	Object,JsonSerializer
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	ReadFrom	Newtonsoft.Json.Linq.JToken	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	ReadFrom	Newtonsoft.Json.Linq.JToken	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	Parse	Newtonsoft.Json.Linq.JToken	1	0	json	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	Parse	Newtonsoft.Json.Linq.JToken	2	0,1	json,settings	String,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	Load	Newtonsoft.Json.Linq.JToken	2	0,1	reader,settings	JsonReader,JsonLoadSettings
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	Load	Newtonsoft.Json.Linq.JToken	1	0	reader	JsonReader
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	ReadFromAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	ReadFromAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	2	0,1	reader,cancellationToken	JsonReader,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	LoadAsync	System.Threading.Tasks.Task`1[[Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]]	3	0,1,2	reader,settings,cancellationToken	JsonReader,JsonLoadSettings,CancellationToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	get_EqualityComparer	Newtonsoft.Json.Linq.JTokenEqualityComparer	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	DeepEquals	System.Boolean	2	0,1	t1,t2	JToken,JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Boolean	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.DateTimeOffset	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Int64	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.DateTimeOffset, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Decimal, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Char, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Int32	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Int16	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.UInt16	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Char	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Byte	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.SByte	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Int16, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.UInt16, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.SByte, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.DateTime	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Single, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Decimal	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.UInt32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.UInt64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Double	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Single	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.String	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.UInt32	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.UInt64	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Byte[]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Guid	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.TimeSpan	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Nullable`1[[System.TimeSpan, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Explicit	System.Uri	1	0	value	JToken
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Boolean
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	DateTimeOffset
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Byte
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JToken	op_Implicit	Newtonsoft.Json.Linq.JToken	1	0	value	Nullable`1
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JValue	CreateComment	Newtonsoft.Json.Linq.JValue	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JValue	CreateString	Newtonsoft.Json.Linq.JValue	1	0	value	String
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JValue	CreateNull	Newtonsoft.Json.Linq.JValue	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Linq	Newtonsoft.Json.Linq.JValue	CreateUndefined	Newtonsoft.Json.Linq.JValue	0	ないよーん	ないよーん	ないよーん
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.DynamicUtils+BinderWrapper	GetMember	System.Runtime.CompilerServices.CallSiteBinder	2	0,1	name,context	String,Type
+Newtonsoft.Json	Newtonsoft.Json.Utilities	Newtonsoft.Json.Utilities.DynamicUtils+BinderWrapper	SetMember	System.Runtime.CompilerServices.CallSiteBinder	2	0,1	name,context	String,Type
