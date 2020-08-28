@@ -90,7 +90,10 @@ namespace app {
             "Newtonsoft.Json",
             "System.DateTime",
             "System.Text.NormalizationForm",
-            "System.Text.Rune"
+            "System.Text.Rune",
+            "/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll",
+            "Unity.UnityContainer",
+            "Unity.Events.NamedEventArgs"
         };
         private static List<string> OPTION_MODE_LIST = new List<string> {
             OPTION_INTERNAL_LIB,
