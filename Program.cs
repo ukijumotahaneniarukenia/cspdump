@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -240,6 +240,15 @@ namespace app {
             return stdlibAssemblyNameHashSet;
         }
 
+        private static HashSet<string> getExtLibAssemblyNameHashSet (HashSet<string> extLibAssemblyHashSet) {
+            //外部ライブラリ
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+
+            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            return extlibAssemblyNameHashSet;
+        }
+
         private static HashSet<string> getStdLibNamespaceNameHashSet () {
             //デフォルトの標準ライブラリのみ
             HashSet<HashSet<string>> stdLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
@@ -252,6 +261,22 @@ namespace app {
             }
 
             return stdLibNamespaceNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
+        private static HashSet<string> getExtLibNamespaceNameHashSet (HashSet<string> extLibAssemblyHashSet) {
+            //外部ライブラリ
+            HashSet<HashSet<string>> extLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
+
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+
+            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            foreach (string assemblyName in extlibAssemblyNameHashSet) {
+
+                extLibNamespaceNameHashSet.Add (assemblyTypeDict[assemblyName].Select (type => type.Namespace).ToHashSet ());
+
+            }
+
+            return extLibNamespaceNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
         }
 
         private static HashSet<string> getStdLibTypeNameHashSet () {
@@ -266,6 +291,23 @@ namespace app {
             }
 
             return stdLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
+
+        private static HashSet<string> getExtLibTypeNameHashSet (HashSet<string> extLibAssemblyHashSet) {
+            //外部ライブラリ
+            HashSet<HashSet<string>> extLibTypeNameHashSet = new HashSet<HashSet<string>> ();
+
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+
+            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            foreach (string assemblyName in extlibAssemblyNameHashSet) {
+
+                extLibTypeNameHashSet.Add (assemblyTypeDict[assemblyName].Select (type => type.FullName).ToHashSet ());
+
+            }
+
+            return extLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
         }
 
         private static Dictionary<string, List<Type>> getStdLibAssemblyTypeList () {
@@ -920,24 +962,53 @@ namespace app {
 
             HashSet<string> showList = null;
 
-            switch (DEFAULT_SHOW_LIST) {
+            switch (DEFAULT_MODE) {
+                case OPTION_INTERNAL_LIB:
+                    switch (DEFAULT_SHOW_LIST) {
 
-                case OPTION_SHOW_ASSEMBLY_LIST:
-                    showList = getStdLibAssemblyNameHashSet ();
-                    outputShowList (showList);
-                    Environment.Exit (0);
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            showList = getStdLibAssemblyNameHashSet ();
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            showList = getStdLibNamespaceNameHashSet ();
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            showList = getStdLibTypeNameHashSet ();
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
-                case OPTION_SHOW_NAMESPACE_LIST:
-                    showList = getStdLibNamespaceNameHashSet ();
-                    outputShowList (showList);
-                    Environment.Exit (0);
-                    break;
-                case OPTION_SHOW_TYPE_LIST:
-                    showList = getStdLibTypeNameHashSet ();
-                    outputShowList (showList);
-                    Environment.Exit (0);
+                case OPTION_EXTERNAL_LIB:
+                    switch (DEFAULT_SHOW_LIST) {
+
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            showList = getExtLibAssemblyNameHashSet (targetNameHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            showList = getExtLibNamespaceNameHashSet (targetNameHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            showList = getExtLibTypeNameHashSet (targetNameHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
+                    Usage (appName);
                     break;
             }
 

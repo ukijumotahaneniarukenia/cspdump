@@ -127,6 +127,12 @@ $ cspdump --external-lib --as-namespace-list RestSharp
 
 $ cspdump --external-lib --as-assembly-list RestSharp
 
+$ cspdump --external-lib --as-assembly-list Google.Apis.Core  --show-assembly-list
+
+$ cspdump --external-lib --as-assembly-list Google.Apis.Core  --show-namespace-list
+
+$ cspdump --external-lib --as-assembly-list Google.Apis.Core  --show-type-list
+
 $ cspdump --external-lib --as-namespace-list RestSharp --method-static
 
 $ cspdump --external-lib --as-namespace-list RestSharp --method-instance
