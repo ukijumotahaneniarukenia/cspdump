@@ -127,21 +127,21 @@ $ cspdump --external-lib --as-namespace-list RestSharp
 
 $ cspdump --external-lib --as-assembly-list RestSharp
 
-$ dotnet run --external-lib --as-namespace-list RestSharp --method-static
+$ cspdump --external-lib --as-namespace-list RestSharp --method-static
 
-$ dotnet run --external-lib --as-namespace-list RestSharp --method-instance
+$ cspdump --external-lib --as-namespace-list RestSharp --method-instance
 
-$ dotnet run --external-lib --as-namespace-list RestSharp --property-static
+$ cspdump --external-lib --as-namespace-list RestSharp --property-static
 
-$ dotnet run --external-lib --as-namespace-list RestSharp --property-instance
+$ cspdump --external-lib --as-namespace-list RestSharp --property-instance
 
-$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
+$ cspdump --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
 
-$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --method-static
+$ cspdump --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --method-static
 
-$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-static
+$ cspdump --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-static
 
-$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
+$ cspdump --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
 ```
 
 ERR
