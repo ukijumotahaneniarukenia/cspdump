@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -78,6 +79,7 @@ namespace app {
         private static string DEFAULT_SHOW_LIST = "";
         private const string OPTION_INTERNAL_LIB = "--internal-lib";
         private const string OPTION_EXTERNAL_LIB = "--external-lib";
+        private const string OPTION_DLL_FILE_LIB = "--dll-file-lib";
         private static string DEFAULT_MODE = OPTION_INTERNAL_LIB;
         private const string OPTION_PROPERTY_STATIC = "--property-static";
         private const string OPTION_PROPERTY_INSTANCE = "--property-instance";
@@ -92,7 +94,8 @@ namespace app {
         };
         private static List<string> OPTION_MODE_LIST = new List<string> {
             OPTION_INTERNAL_LIB,
-            OPTION_EXTERNAL_LIB
+            OPTION_EXTERNAL_LIB,
+            OPTION_DLL_FILE_LIB
         };
         private static List<string> OPTION_AS_LIST = new List<string> {
             OPTION_AS_ASSEMBLY_LIST,
@@ -110,8 +113,8 @@ namespace app {
             OPTION_METHOD_STATIC,
             OPTION_METHOD_INSTANCE
         };
-        //クラスのパブリックなスタティックプロパティを取得
         private static Dictionary<string, Dictionary<string, string>> getPropertyOfStaticSummaryInfoDict (Type type) {
+            //クラスのパブリックなスタティックプロパティを取得
             Dictionary<string, Dictionary<string, string>> propertyOfStaticSummaryInfoDict = new Dictionary<string, Dictionary<string, string>> ();
 
             int subgrp = 0;
@@ -124,17 +127,16 @@ namespace app {
 
                 Dictionary<string, string> propertyOfStaticDetailInfoDict = new Dictionary<string, string> ();
 
-                propertyOfStaticDetailInfoDict.Add (PROPERTY_OF_STATIC, propertyInfo.Name); //スタティックプロパティ名
-                propertyOfStaticDetailInfoDict.Add (PROPERTY_OF_STATIC_RETURN_TYPE_NAME, propertyInfo.ToString ().Split (SEPARATOR) [0]); //スタティックプロパティ名の戻り値の型名
+                propertyOfStaticDetailInfoDict.Add (PROPERTY_OF_STATIC, propertyInfo.Name);
+                propertyOfStaticDetailInfoDict.Add (PROPERTY_OF_STATIC_RETURN_TYPE_NAME, propertyInfo.ToString ().Split (SEPARATOR) [0]);
 
                 propertyOfStaticSummaryInfoDict.Add (String.Format (SUB_GROUP_DIGIT, subgrp) + COLUMN_JOINER + type.FullName, propertyOfStaticDetailInfoDict);
             }
 
             return propertyOfStaticSummaryInfoDict;
         }
-
-        //クラスのパブリックなインスタンスプロパティを取得
         private static Dictionary<string, Dictionary<string, string>> getPropertyOfInstanceSummaryInfoDict (Type type) {
+            //クラスのパブリックなインスタンスプロパティを取得
             Dictionary<string, Dictionary<string, string>> propertyOfInstanceSummaryInfoDict = new Dictionary<string, Dictionary<string, string>> ();
 
             int subgrp = 0;
@@ -147,8 +149,8 @@ namespace app {
 
                 Dictionary<string, string> propertyOfInstanceDetailInfoDict = new Dictionary<string, string> ();
 
-                propertyOfInstanceDetailInfoDict.Add (PROPERTY_OF_INSTANCE, propertyInfo.Name); //インスタンスプロパティ名
-                propertyOfInstanceDetailInfoDict.Add (PROPERTY_OF_INSTANCE_RETURN_TYPE_NAME, propertyInfo.ToString ().Split (SEPARATOR) [0]); //インスタンスプロパティ名の戻り値の型名
+                propertyOfInstanceDetailInfoDict.Add (PROPERTY_OF_INSTANCE, propertyInfo.Name);
+                propertyOfInstanceDetailInfoDict.Add (PROPERTY_OF_INSTANCE_RETURN_TYPE_NAME, propertyInfo.ToString ().Split (SEPARATOR) [0]);
 
                 propertyOfInstanceSummaryInfoDict.Add (String.Format (SUB_GROUP_DIGIT, subgrp) + COLUMN_JOINER + type.FullName, propertyOfInstanceDetailInfoDict);
             }
@@ -156,9 +158,8 @@ namespace app {
             return propertyOfInstanceSummaryInfoDict;
 
         }
-
-        // クラスのパブリックなスタティックメソッドを取得
         private static Dictionary<string, Dictionary<string, string>> getMethodOfStaticSummaryInfoDict (Type type) {
+            // クラスのパブリックなスタティックメソッドを取得
             Dictionary<string, Dictionary<string, string>> methodOfStaticSummaryInfoDict = new Dictionary<string, Dictionary<string, string>> ();
 
             int subgrp = 0;
@@ -173,19 +174,19 @@ namespace app {
 
                 Dictionary<string, string> methodOfStaticDetailInfoDict = new Dictionary<string, string> ();
 
-                methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_NAME, methodOfStaticInfo.Name); //メソッド名
-                methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_RETURN_TYPE_NAME, methodOfStaticInfo.ReturnType.FullName); //メソッドの戻り値の型名
+                methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_NAME, methodOfStaticInfo.Name);
+                methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_RETURN_TYPE_NAME, methodOfStaticInfo.ReturnType.FullName);
 
                 if (parameterOfStaticInfoList.Count == 0) {
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT, DEFAULT_NONE_INT_VALUE.ToString ()); //メソッドの仮引数の個数
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の位置番号
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の変数名
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の型名
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT, DEFAULT_NONE_INT_VALUE.ToString ());
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO, DEFAULT_NONE_STRING_VALUE);
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME, DEFAULT_NONE_STRING_VALUE);
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME, DEFAULT_NONE_STRING_VALUE);
                 } else {
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT, string.Join (STRING_JOINER, parameterOfStaticInfoList.Count.ToString ())); //メソッドの仮引数の個数
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.Position).ToArray ())); //メソッドの仮引数の位置番号
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.Name).ToArray ())); //メソッドの仮引数の変数名
-                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.ParameterType.Name).ToArray ())); //メソッドの仮引数の型名
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT, string.Join (STRING_JOINER, parameterOfStaticInfoList.Count.ToString ()));
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.Position).ToArray ()));
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.Name).ToArray ()));
+                    methodOfStaticDetailInfoDict.Add (METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME, string.Join (STRING_JOINER, parameterOfStaticInfoList.Select (parameterInfo => parameterInfo.ParameterType.Name).ToArray ()));
                 }
 
                 methodOfStaticSummaryInfoDict.Add (String.Format (SUB_GROUP_DIGIT, subgrp) + COLUMN_JOINER + type.FullName, methodOfStaticDetailInfoDict);
@@ -194,9 +195,8 @@ namespace app {
             return methodOfStaticSummaryInfoDict;
 
         }
-
-        // クラスのパブリックなインスタンスメソッドを取得
         private static Dictionary<string, Dictionary<string, string>> getMethodOfInstanceSummaryInfoDict (Type type) {
+            // クラスのパブリックなインスタンスメソッドを取得
             Dictionary<string, Dictionary<string, string>> methodOfInstanceSummaryInfoDict = new Dictionary<string, Dictionary<string, string>> ();
 
             int subgrp = 0;
@@ -211,19 +211,19 @@ namespace app {
 
                 Dictionary<string, string> methodOfInstanceDetailInfoDict = new Dictionary<string, string> ();
 
-                methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_NAME, methodOfInstanceInfo.Name); //メソッド名
-                methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_RETURN_TYPE_NAME, methodOfInstanceInfo.ReturnType.FullName); //メソッドの戻り値の型名
+                methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_NAME, methodOfInstanceInfo.Name);
+                methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_RETURN_TYPE_NAME, methodOfInstanceInfo.ReturnType.FullName);
 
                 if (parameterOfInstanceInfoList.Count == 0) {
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT, DEFAULT_NONE_INT_VALUE.ToString ()); //メソッドの仮引数の個数
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の位置番号
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の変数名
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME, DEFAULT_NONE_STRING_VALUE); //メソッドの仮引数の型名
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT, DEFAULT_NONE_INT_VALUE.ToString ());
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO, DEFAULT_NONE_STRING_VALUE);
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME, DEFAULT_NONE_STRING_VALUE);
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME, DEFAULT_NONE_STRING_VALUE);
                 } else {
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Count.ToString ())); //メソッドの仮引数の個数
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.Position).ToArray ())); //メソッドの仮引数の位置番号
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.Name).ToArray ())); //メソッドの仮引数の変数名
-                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.ParameterType.Name).ToArray ())); //メソッドの仮引数の型名
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Count.ToString ()));
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.Position).ToArray ()));
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.Name).ToArray ()));
+                    methodOfInstanceDetailInfoDict.Add (METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME, string.Join (STRING_JOINER, parameterOfInstanceInfoList.Select (parameterInfo => parameterInfo.ParameterType.Name).ToArray ()));
                 }
 
                 methodOfInstanceSummaryInfoDict.Add (String.Format (SUB_GROUP_DIGIT, subgrp) + COLUMN_JOINER + type.FullName, methodOfInstanceDetailInfoDict);
@@ -232,25 +232,30 @@ namespace app {
             return methodOfInstanceSummaryInfoDict;
 
         }
-
         private static HashSet<string> getStdLibAssemblyNameHashSet () {
-            //デフォルトの標準ライブラリのみ
+            //標準ライブラリ
             HashSet<string> stdlibAssemblyNameHashSet = AppDomain.CurrentDomain.GetAssemblies ().Select (Assembly => Assembly.GetName ().Name).ToHashSet ();
 
             return stdlibAssemblyNameHashSet;
         }
-
         private static HashSet<string> getExtLibAssemblyNameHashSet (HashSet<string> extLibAssemblyHashSet) {
             //外部ライブラリ
-            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList (extLibAssemblyHashSet);
 
-            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+            HashSet<string> extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
 
             return extlibAssemblyNameHashSet;
         }
+        private static HashSet<string> getDllLibAssemblyNameHashSet (HashSet<string> dllLibAssemblyHashSet) {
+            //DLLライブラリ
+            Dictionary<string, List<Type>> assemblyTypeDict = getDllLibAssemblyTypeList (dllLibAssemblyHashSet);
 
+            HashSet<string> dlllibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            return dlllibAssemblyNameHashSet;
+        }
         private static HashSet<string> getStdLibNamespaceNameHashSet () {
-            //デフォルトの標準ライブラリのみ
+            //標準ライブラリ
             HashSet<HashSet<string>> stdLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
 
             HashSet<Assembly> stdlibAssemblyHashSet = AppDomain.CurrentDomain.GetAssemblies ().ToHashSet ();
@@ -266,9 +271,9 @@ namespace app {
             //外部ライブラリ
             HashSet<HashSet<string>> extLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
 
-            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList (extLibAssemblyHashSet);
 
-            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+            HashSet<string> extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
 
             foreach (string assemblyName in extlibAssemblyNameHashSet) {
 
@@ -278,9 +283,24 @@ namespace app {
 
             return extLibNamespaceNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
         }
+        private static HashSet<string> getDllLibNamespaceNameHashSet (HashSet<string> dllLibAssemblyHashSet) {
+            //DLLライブラリ
+            HashSet<HashSet<string>> dllLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
 
+            Dictionary<string, List<Type>> assemblyTypeDict = getDllLibAssemblyTypeList (dllLibAssemblyHashSet);
+
+            HashSet<string> dlllibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            foreach (string assemblyName in dlllibAssemblyNameHashSet) {
+
+                dllLibNamespaceNameHashSet.Add (assemblyTypeDict[assemblyName].Select (type => type.Namespace).ToHashSet ());
+
+            }
+
+            return dllLibNamespaceNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
         private static HashSet<string> getStdLibTypeNameHashSet () {
-            //デフォルトの標準ライブラリのみ
+            //標準ライブラリ
             HashSet<HashSet<string>> stdLibTypeNameHashSet = new HashSet<HashSet<string>> ();
 
             HashSet<Assembly> stdlibAssemblyList = AppDomain.CurrentDomain.GetAssemblies ().ToHashSet ();
@@ -292,14 +312,13 @@ namespace app {
 
             return stdLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
         }
-
         private static HashSet<string> getExtLibTypeNameHashSet (HashSet<string> extLibAssemblyHashSet) {
             //外部ライブラリ
             HashSet<HashSet<string>> extLibTypeNameHashSet = new HashSet<HashSet<string>> ();
 
-            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList(extLibAssemblyHashSet);
+            Dictionary<string, List<Type>> assemblyTypeDict = getExtLibAssemblyTypeList (extLibAssemblyHashSet);
 
-            HashSet<string>  extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+            HashSet<string> extlibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
 
             foreach (string assemblyName in extlibAssemblyNameHashSet) {
 
@@ -309,10 +328,24 @@ namespace app {
 
             return extLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
         }
+        private static HashSet<string> getDllLibTypeNameHashSet (HashSet<string> dllLibAssemblyHashSet) {
+            //DLLライブラリ
+            HashSet<HashSet<string>> dllLibTypeNameHashSet = new HashSet<HashSet<string>> ();
 
+            Dictionary<string, List<Type>> assemblyTypeDict = getDllLibAssemblyTypeList (dllLibAssemblyHashSet);
+
+            HashSet<string> dlllibAssemblyNameHashSet = assemblyTypeDict.Keys.ToHashSet ();
+
+            foreach (string assemblyName in dlllibAssemblyNameHashSet) {
+
+                dllLibTypeNameHashSet.Add (assemblyTypeDict[assemblyName].Select (type => type.FullName).ToHashSet ());
+
+            }
+
+            return dllLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
         private static Dictionary<string, List<Type>> getStdLibAssemblyTypeList () {
-            //デフォルトの標準ライブラリのみ
-
+            //標準ライブラリ
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
 
             List<Assembly> stdlibAssemblyList = AppDomain.CurrentDomain.GetAssemblies ().ToList ();
@@ -328,9 +361,8 @@ namespace app {
             }
             return assemblyTypeDict;
         }
-
         private static Dictionary<string, List<Type>> getExtLibAssemblyTypeList (HashSet<string> extLibAssemblyHashSet) {
-            //外部ライブラリ指定
+            //外部ライブラリ
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
 
             foreach (string extLibAssembly in extLibAssemblyHashSet) {
@@ -358,6 +390,23 @@ namespace app {
                         //nothing to do
                     }
                 }
+            }
+            return assemblyTypeDict;
+        }
+        private static Dictionary<string, List<Type>> getDllLibAssemblyTypeList (HashSet<string> dllLibAssemblyHashSet) {
+            //DLLライブラリ
+            Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
+
+            foreach (string dllLibAssembly in dllLibAssemblyHashSet) {
+
+                Assembly assembly = Assembly.LoadFrom (dllLibAssembly);
+
+                string assemblyName = assembly.GetName ().Name;
+
+                List<Type> typeList = assembly.GetTypes ().ToList ();
+
+                assemblyTypeDict.Add (assemblyName, typeList);
+
             }
             return assemblyTypeDict;
         }
@@ -504,7 +553,7 @@ namespace app {
 
             }
         }
-        private static void showInternalLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showStdLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> stdLibInfoDict = getStdLibAssemblyTypeList ();
 
@@ -547,7 +596,7 @@ namespace app {
                 }
             }
         }
-        private static void showInternalLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showStdLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> stdLibInfoDict = getStdLibAssemblyTypeList ();
 
@@ -591,7 +640,7 @@ namespace app {
                 }
             }
         }
-        private static void showInternalLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showStdLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> stdLibInfoDict = getStdLibAssemblyTypeList ();
 
@@ -635,7 +684,7 @@ namespace app {
                 }
             }
         }
-        private static void showExternalLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showExtLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
@@ -678,7 +727,7 @@ namespace app {
                 }
             }
         }
-        private static void showExternalLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showExtLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
@@ -722,7 +771,7 @@ namespace app {
                 }
             }
         }
-        private static void showExternalLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showExtLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
@@ -766,19 +815,21 @@ namespace app {
                 }
             }
         }
-        private static void showExternalLibInfo (string appName, HashSet<string> targetNameHashSet) {
+        private static void showDllLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet, HashSet<string> dllFileHashSet) {
 
-            Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
+            Dictionary<string, List<Type>> dllLibInfoDict = getDllLibAssemblyTypeList (dllFileHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
 
+            //filter
+            List<string> assemblyNameList = dllLibInfoDict.Keys.Where (assemblyName => targetNameHashSet.Contains (assemblyName)).ToList ();
+
             //body
-            foreach (string assemblyName in extLibInfoDict.Keys) {
+            foreach (string assemblyName in assemblyNameList) {
+                List<Type> typeList = dllLibInfoDict[assemblyName];
 
-                List<Type> typeList = extLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
-
-                foreach (Type type in extLibInfoDict[assemblyName]) {
+                foreach (Type type in typeList) {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
@@ -807,7 +858,94 @@ namespace app {
                 }
             }
         }
+        private static void showDllLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet, HashSet<string> dllFileHashSet) {
 
+            Dictionary<string, List<Type>> dllLibInfoDict = getDllLibAssemblyTypeList (dllFileHashSet);
+
+            //header
+            outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
+
+            List<string> assemblyNameList = dllLibInfoDict.Keys.ToList ();
+
+            //body
+            foreach (string assemblyName in assemblyNameList) {
+
+                //filter
+                List<Type> typeList = dllLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.Namespace)).ToList ();
+
+                foreach (Type type in typeList) {
+
+                    Dictionary<string, Dictionary<string, string>> summaryDict = null;
+
+                    switch (DEFAULT_FETCH_INFO) {
+
+                        case OPTION_PROPERTY_STATIC:
+                            summaryDict = getPropertyOfStaticSummaryInfoDict (type);
+                            outputPropertyOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            summaryDict = getPropertyOfInstanceSummaryInfoDict (type);
+                            outputPropertyOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            summaryDict = getMethodOfStaticSummaryInfoDict (type);
+                            outputMethodOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            summaryDict = getMethodOfInstanceSummaryInfoDict (type);
+                            outputMethodOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                }
+            }
+        }
+        private static void showDllLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet, HashSet<string> dllFileHashSet) {
+
+            Dictionary<string, List<Type>> dllLibInfoDict = getDllLibAssemblyTypeList (dllFileHashSet);
+
+            //header
+            outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
+
+            List<string> assemblyNameList = dllLibInfoDict.Keys.ToList ();
+
+            //body
+            foreach (string assemblyName in assemblyNameList) {
+
+                //filter
+                List<Type> typeList = dllLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
+
+                foreach (Type type in typeList) {
+
+                    Dictionary<string, Dictionary<string, string>> summaryDict = null;
+
+                    switch (DEFAULT_FETCH_INFO) {
+
+                        case OPTION_PROPERTY_STATIC:
+                            summaryDict = getPropertyOfStaticSummaryInfoDict (type);
+                            outputPropertyOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            summaryDict = getPropertyOfInstanceSummaryInfoDict (type);
+                            outputPropertyOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            summaryDict = getMethodOfStaticSummaryInfoDict (type);
+                            outputMethodOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            summaryDict = getMethodOfInstanceSummaryInfoDict (type);
+                            outputMethodOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                }
+            }
+        }
         static void Main (string[] args) {
 
             string appName = Environment.GetCommandLineArgs () [0];
@@ -875,6 +1013,9 @@ namespace app {
                         case OPTION_EXTERNAL_LIB:
                             DEFAULT_MODE = OPTION_EXTERNAL_LIB;
                             break;
+                        case OPTION_DLL_FILE_LIB:
+                            DEFAULT_MODE = OPTION_DLL_FILE_LIB;
+                            break;
                         case OPTION_PROPERTY_STATIC:
                             DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_PROPERTY_HEADER_LIST;
@@ -931,6 +1072,9 @@ namespace app {
                         case OPTION_EXTERNAL_LIB:
                             DEFAULT_MODE = OPTION_EXTERNAL_LIB;
                             break;
+                        case OPTION_DLL_FILE_LIB:
+                            DEFAULT_MODE = OPTION_DLL_FILE_LIB;
+                            break;
                         case OPTION_PROPERTY_STATIC:
                             DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_PROPERTY_HEADER_LIST;
@@ -960,12 +1104,25 @@ namespace app {
                 Usage (appName);
             }
 
+            HashSet<string> dllFileHashSet = null;
+            if (DEFAULT_MODE == OPTION_DLL_FILE_LIB) {
+                //ファイルの存在チェック
+                dllFileHashSet = targetNameHashSet.Where (filePath => File.Exists (filePath)).ToHashSet ();
+
+                //dllファイルは絞り込み条件から除外
+                targetNameHashSet = targetNameHashSet.Where (filePath => !File.Exists (filePath)).ToHashSet ();
+
+                if (dllFileHashSet.Count == 0) {
+                    //指定したファイルパスが存在しない場合は除外
+                    Usage (appName);
+                }
+            }
+
             HashSet<string> showList = null;
 
             switch (DEFAULT_MODE) {
                 case OPTION_INTERNAL_LIB:
                     switch (DEFAULT_SHOW_LIST) {
-
                         case OPTION_SHOW_ASSEMBLY_LIST:
                             showList = getStdLibAssemblyNameHashSet ();
                             outputShowList (showList);
@@ -987,7 +1144,6 @@ namespace app {
                     break;
                 case OPTION_EXTERNAL_LIB:
                     switch (DEFAULT_SHOW_LIST) {
-
                         case OPTION_SHOW_ASSEMBLY_LIST:
                             showList = getExtLibAssemblyNameHashSet (targetNameHashSet);
                             outputShowList (showList);
@@ -1007,6 +1163,27 @@ namespace app {
                             break;
                     }
                     break;
+                case OPTION_DLL_FILE_LIB:
+                    switch (DEFAULT_SHOW_LIST) {
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            showList = getDllLibAssemblyNameHashSet (dllFileHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            showList = getDllLibNamespaceNameHashSet (dllFileHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            showList = getDllLibTypeNameHashSet (dllFileHashSet);
+                            outputShowList (showList);
+                            Environment.Exit (0);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
                 default:
                     Usage (appName);
                     break;
@@ -1016,13 +1193,13 @@ namespace app {
                 case OPTION_INTERNAL_LIB:
                     switch (DEFAULT_AS_LIST) {
                         case OPTION_AS_ASSEMBLY_LIST:
-                            showInternalLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
+                            showStdLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
                             break;
                         case OPTION_AS_NAMESPACE_LIST:
-                            showInternalLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet);
+                            showStdLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet);
                             break;
                         case OPTION_AS_TYPE_LIST:
-                            showInternalLibFilteredByTypeNameListInfo (appName, targetNameHashSet);
+                            showStdLibFilteredByTypeNameListInfo (appName, targetNameHashSet);
                             break;
                         default:
                             Usage (appName);
@@ -1032,13 +1209,29 @@ namespace app {
                 case OPTION_EXTERNAL_LIB:
                     switch (DEFAULT_AS_LIST) {
                         case OPTION_AS_ASSEMBLY_LIST:
-                            showExternalLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
+                            showExtLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
                             break;
                         case OPTION_AS_NAMESPACE_LIST:
-                            showExternalLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet);
+                            showExtLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet);
                             break;
                         case OPTION_AS_TYPE_LIST:
-                            showExternalLibFilteredByTypeNameListInfo (appName, targetNameHashSet);
+                            showExtLibFilteredByTypeNameListInfo (appName, targetNameHashSet);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                    break;
+                case OPTION_DLL_FILE_LIB:
+                    switch (DEFAULT_AS_LIST) {
+                        case OPTION_AS_ASSEMBLY_LIST:
+                            showDllLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet, dllFileHashSet);
+                            break;
+                        case OPTION_AS_NAMESPACE_LIST:
+                            showDllLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet, dllFileHashSet);
+                            break;
+                        case OPTION_AS_TYPE_LIST:
+                            showDllLibFilteredByTypeNameListInfo (appName, targetNameHashSet, dllFileHashSet);
                             break;
                         default:
                             Usage (appName);

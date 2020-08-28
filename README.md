@@ -170,10 +170,87 @@ File name: 'Newtonsoft.Json, Culture=neutral, PublicKeyToken=null'
 Aborted (core dumped)
 ```
 
+DLLライブラリ
+
+CMD
+
+たまに出んときがあるので、直指定で
+
+```
+$ find $HOME/.nuget/packages -type f | grep -P 'dll$' | grep Unity
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net48/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net48/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net47/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net47/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net40/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net40/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp3.0/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp3.0/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp1.0/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp1.0/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netstandard1.0/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netstandard1.0/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net46/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/net46/Unity.Abstractions.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netstandard2.0/Unity.Container.dll
+/home/aine/.nuget/packages/unity/5.11.7/lib/netstandard2.0/Unity.Abstractions.dll
+
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll --show-assembly-list
+Unity.Container
+
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll --show-namespace-list
+Unity
+Unity.Builder
+Unity.Events
+Unity.Exceptions
+Unity.Extension
+Unity.Factories
+Unity.Injection
+Unity.Lifetime
+Unity.ObjectBuilder.BuildPlan.DynamicMethod
+Unity.Policy
+Unity.Processors
+Unity.Registration
+Unity.Resolution
+Unity.Storage
+Unity.Strategies
+Unity.Utility
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll --show-type-list
+
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll /home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll --as-namespace-list Unity.Utility Unity.Extension
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll /home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll --as-namespace-list Unity.Utility Unity.Extension --method-static
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll /home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll --as-namespace-list Unity.Utility Unity.Extension --method-instance
+
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll /home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll --as-namespace-list Unity.Utility Unity.Extension --property-static
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll /home/aine/.nuget/packages/unity/5.11.7/lib/net45/Unity.Abstractions.dll --as-namespace-list Unity.Utility Unity.Extension --property-instance
+
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer --as-type-list --method-static
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer --as-type-list --method-instance
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer --as-type-list --property-static
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer --as-type-list --property-instance
+
+$ cspdump --dll-file-lib /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer Unity.Events.NamedEventArgs --as-type-list --property-instance
+
+```
 
 TODO
 
-- [ ] dllファイルをしていしても実行できるようにする
 - [ ] 取得列を使えそうなものは随時追加
 
 
