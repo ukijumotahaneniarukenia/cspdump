@@ -66,6 +66,7 @@ namespace app {
         private static int DEFAULT_NONE_INT_VALUE = 0;
         private static List<string> DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
         private const string OPTION_USAGE = "--usage";
+        private const string OPTION_HELP = "--help";
         private const string OPTION_AS_TYPE_LIST = "--as-type-list";
         private const string OPTION_AS_NAMESPACE_LIST = "--as-namespace-list";
         private const string OPTION_AS_ASSEMBLY_LIST = "--as-assembly-list";
@@ -81,7 +82,7 @@ namespace app {
         private const string OPTION_PROPERTY_STATIC = "--property-static";
         private const string OPTION_METHOD_INSTANCE = "--method-instance";
         private const string OPTION_METHOD_STATIC = "--method-static";
-        private static string DEFAULT_OPTION_VALUE = OPTION_PROPERTY_INSTANCE;
+        private static string DEFAULT_FETCH_INFO = OPTION_PROPERTY_INSTANCE;
 
         private static List<string> OPTION_LIST = new List<string> {
             OPTION_PROPERTY_INSTANCE,
@@ -296,7 +297,7 @@ namespace app {
             Console.WriteLine (EMPTY +
                 RS +
                 RS +
-                "Default: --internal-lib mode" +
+                "Default: --internal-lib mode AND --property-instance mode AND --as-type-list mode" +
                 RS +
                 RS +
                 "Option: " + String.Join (SEPARATOR, OPTION_LIST.ToArray ()) +
@@ -305,37 +306,9 @@ namespace app {
                 "Usage:" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --method-static" +
+                "CMD: " + appName + SEPARATOR + "[--external-lib,--internal-lib]" + SEPARATOR + "[--as-type-list,--as-namespace-list,--as-assembly-list]" + SEPARATOR + " [Newtonsoft.Json,System.DateTime,System.Text.NormalizationForm,System.Text.Rune]" + SEPARATOR + "[--method-static,--method-instance,--property-static,--property-instance]" +
                 RS +
                 RS +
-                "or" +
-                RS +
-                RS +
-                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --method-instance" +
-                RS +
-                RS +
-                "or" +
-                RS +
-                RS +
-                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --property-static" +
-                RS +
-                RS +
-                "or" +
-                RS +
-                RS +
-                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --property-instance" +
-                RS +
-                RS +
-                "or" +
-                RS +
-                RS +
-                "CMD: " + appName + SEPARATOR + "--internal-lib System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
-                RS +
-                RS +
-                "or" +
-                RS +
-                RS +
-                "CMD: " + appName + SEPARATOR + "System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
                 RS
             );
 
@@ -483,7 +456,7 @@ namespace app {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
-                    switch (DEFAULT_OPTION_VALUE) {
+                    switch (DEFAULT_FETCH_INFO) {
 
                         case OPTION_PROPERTY_STATIC:
                             summaryDict = getPropertyOfStaticSummaryInfoDict (type);
@@ -528,7 +501,7 @@ namespace app {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
-                    switch (DEFAULT_OPTION_VALUE) {
+                    switch (DEFAULT_FETCH_INFO) {
 
                         case OPTION_PROPERTY_STATIC:
                             summaryDict = getPropertyOfStaticSummaryInfoDict (type);
@@ -571,7 +544,7 @@ namespace app {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
-                    switch (DEFAULT_OPTION_VALUE) {
+                    switch (DEFAULT_FETCH_INFO) {
 
                         case OPTION_PROPERTY_STATIC:
                             summaryDict = getPropertyOfStaticSummaryInfoDict (type);
@@ -612,7 +585,7 @@ namespace app {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
-                    switch (DEFAULT_OPTION_VALUE) {
+                    switch (DEFAULT_FETCH_INFO) {
 
                         case OPTION_PROPERTY_STATIC:
                             summaryDict = getPropertyOfStaticSummaryInfoDict (type);
@@ -678,57 +651,7 @@ namespace app {
                         case OPTION_USAGE:
                             Usage (appName);
                             break;
-                        case OPTION_AS_ASSEMBLY_LIST:
-                            DEFAULT_AS_LIST = OPTION_AS_ASSEMBLY_LIST;
-                            break;
-                        case OPTION_AS_NAMESPACE_LIST:
-                            DEFAULT_AS_LIST = OPTION_AS_NAMESPACE_LIST;
-                            break;
-                        case OPTION_AS_TYPE_LIST:
-                            DEFAULT_AS_LIST = OPTION_AS_TYPE_LIST;
-                            break;
-                        case OPTION_SHOW_ASSEMBLY_LIST:
-                            DEFAULT_SHOW_LIST = OPTION_SHOW_ASSEMBLY_LIST;
-                            break;
-                        case OPTION_SHOW_NAMESPACE_LIST:
-                            DEFAULT_SHOW_LIST = OPTION_SHOW_NAMESPACE_LIST;
-                            break;
-                        case OPTION_SHOW_TYPE_LIST:
-                            DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
-                            break;
-                        case OPTION_INTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
-                            break;
-                        case OPTION_EXTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_EXTERNAL_LIB;
-                            break;
-                        case OPTION_PROPERTY_STATIC:
-                            DEFAULT_OPTION_VALUE = OPTION_PROPERTY_STATIC;
-                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_PROPERTY_HEADER_LIST;
-                            break;
-                        case OPTION_PROPERTY_INSTANCE:
-                            DEFAULT_OPTION_VALUE = OPTION_PROPERTY_INSTANCE;
-                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
-                            break;
-                        case OPTION_METHOD_STATIC:
-                            DEFAULT_OPTION_VALUE = OPTION_METHOD_STATIC;
-                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_METHOD_HEADER_LIST;
-                            break;
-                        case OPTION_METHOD_INSTANCE:
-                            DEFAULT_OPTION_VALUE = OPTION_METHOD_INSTANCE;
-                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_METHOD_HEADER_LIST;
-                            break;
-                        default:
-                            //TODO
-                            targetNameHashSet.Add (arg);
-                            break;
-                    }
-                }
-
-            } else {
-                foreach (string arg in cmdLineArgs) {
-                    switch (arg) {
-                        case OPTION_USAGE:
+                        case OPTION_HELP:
                             Usage (appName);
                             break;
                         case OPTION_AS_ASSEMBLY_LIST:
@@ -756,19 +679,75 @@ namespace app {
                             DEFAULT_PATTERN = OPTION_EXTERNAL_LIB;
                             break;
                         case OPTION_PROPERTY_STATIC:
-                            DEFAULT_OPTION_VALUE = OPTION_PROPERTY_STATIC;
+                            DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_PROPERTY_HEADER_LIST;
                             break;
                         case OPTION_PROPERTY_INSTANCE:
-                            DEFAULT_OPTION_VALUE = OPTION_PROPERTY_INSTANCE;
+                            DEFAULT_FETCH_INFO = OPTION_PROPERTY_INSTANCE;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
                             break;
                         case OPTION_METHOD_STATIC:
-                            DEFAULT_OPTION_VALUE = OPTION_METHOD_STATIC;
+                            DEFAULT_FETCH_INFO = OPTION_METHOD_STATIC;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_METHOD_HEADER_LIST;
                             break;
                         case OPTION_METHOD_INSTANCE:
-                            DEFAULT_OPTION_VALUE = OPTION_METHOD_INSTANCE;
+                            DEFAULT_FETCH_INFO = OPTION_METHOD_INSTANCE;
+                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_METHOD_HEADER_LIST;
+                            break;
+                        default:
+                            //TODO
+                            targetNameHashSet.Add (arg);
+                            break;
+                    }
+                }
+
+            } else {
+                foreach (string arg in cmdLineArgs) {
+                    switch (arg) {
+                        case OPTION_USAGE:
+                            Usage (appName);
+                            break;
+                        case OPTION_HELP:
+                            Usage (appName);
+                            break;
+                        case OPTION_AS_ASSEMBLY_LIST:
+                            DEFAULT_AS_LIST = OPTION_AS_ASSEMBLY_LIST;
+                            break;
+                        case OPTION_AS_NAMESPACE_LIST:
+                            DEFAULT_AS_LIST = OPTION_AS_NAMESPACE_LIST;
+                            break;
+                        case OPTION_AS_TYPE_LIST:
+                            DEFAULT_AS_LIST = OPTION_AS_TYPE_LIST;
+                            break;
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_ASSEMBLY_LIST;
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_NAMESPACE_LIST;
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
+                            break;
+                        case OPTION_INTERNAL_LIB:
+                            DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
+                            break;
+                        case OPTION_EXTERNAL_LIB:
+                            DEFAULT_PATTERN = OPTION_EXTERNAL_LIB;
+                            break;
+                        case OPTION_PROPERTY_STATIC:
+                            DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
+                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_PROPERTY_HEADER_LIST;
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            DEFAULT_FETCH_INFO = OPTION_PROPERTY_INSTANCE;
+                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            DEFAULT_FETCH_INFO = OPTION_METHOD_STATIC;
+                            DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_STATIC_METHOD_HEADER_LIST;
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            DEFAULT_FETCH_INFO = OPTION_METHOD_INSTANCE;
                             DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_METHOD_HEADER_LIST;
                             break;
                         default:
