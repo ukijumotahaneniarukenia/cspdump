@@ -67,57 +67,58 @@ CMD: cspdump System.DateTime System.Text.NormalizationForm System.Text.Rune --me
 
 標準ライブラリ
 
-CMD
 
 ```
-$ cspdump  System.Text.Rune --method-static
-```
 
-OUT
+$ dotnet run --show-assembly-list
+
+$ dotnet run --as-assembly-list System.Collections System.Linq
+
+$ dotnet run --as-assembly-list System.Collections
+
+$ dotnet run --as-assembly-list System.Collections --method-static
+
+$ dotnet run --as-assembly-list System.Collections --method-instance
+
+$ dotnet run --as-assembly-list System.Collections --property-static
+
+$ dotnet run --as-assembly-list System.Collections --property-instance
+
+$ dotnet run --as-assembly-list System.Console System.Collections --property-instance
+
+
+
+$ dotnet run --show-namespace-list
+
+$ dotnet run --as-namespace-list System.Collections.Generic
+
+$ dotnet run --as-namespace-list System.Collections.Generic --method-static
+
+$ dotnet run --as-namespace-list System.Collections.Generic --method-instance
+
+$ dotnet run --as-namespace-list System.Collections.Generic --property-static
+
+$ dotnet run --as-namespace-list System.Collections.Generic --property-instance
+
+$ dotnet run --as-namespace-list System.Text.RegularExpressions System.Text.Unicode System.Globalization --property-instance
+
+
+
+$ dotnet run --show-type-list
+
+$ dotnet run --as-type-list System.Text.Rune
+
+$ dotnet run --as-type-list System.Text.Rune --method-static
+
+$ dotnet run --as-type-list System.Text.Rune --method-instance
+
+$ dotnet run --as-type-list System.Text.Rune --property-static
+
+$ dotnet run --as-type-list System.Text.Rune --property-instance
+
+$ dotnet run --as-type-list System.Text.Rune System.TimeZone --property-instance
 
 ```
-アセンブリ名	名前空間名	型名	スタティックメソッド名	スタティックメソッドの戻り値の型名	スタティックメソッドの仮引数の個数	スタティックメソッドの仮引数の位置番号	スタティックメソッドの仮引数の変数名	スタティックメソッドの仮引数の型名
-System.Private.CoreLib	System.Text	System.Text.Rune	op_Equality	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_Inequality	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_LessThan	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_LessThanOrEqual	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_GreaterThan	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_GreaterThanOrEqual	System.Boolean	2	0,1	left,right	Rune,Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	op_Explicit	System.Text.Rune	1	0	ch	Char
-System.Private.CoreLib	System.Text	System.Text.Rune	op_Explicit	System.Text.Rune	1	0	value	UInt32
-System.Private.CoreLib	System.Text	System.Text.Rune	op_Explicit	System.Text.Rune	1	0	value	Int32
-System.Private.CoreLib	System.Text	System.Text.Rune	get_ReplacementChar	System.Text.Rune	0	ないよーん	ないよーん	ないよーん
-System.Private.CoreLib	System.Text	System.Text.Rune	DecodeFromUtf16	System.Buffers.OperationStatus	3	0,1,2	source,result,charsConsumed	ReadOnlySpan`1,Rune&,Int32&
-System.Private.CoreLib	System.Text	System.Text.Rune	DecodeFromUtf8	System.Buffers.OperationStatus	3	0,1,2	source,result,bytesConsumed	ReadOnlySpan`1,Rune&,Int32&
-System.Private.CoreLib	System.Text	System.Text.Rune	DecodeLastFromUtf16	System.Buffers.OperationStatus	3	0,1,2	source,result,charsConsumed	ReadOnlySpan`1,Rune&,Int32&
-System.Private.CoreLib	System.Text	System.Text.Rune	DecodeLastFromUtf8	System.Buffers.OperationStatus	3	0,1,2	source,value,bytesConsumed	ReadOnlySpan`1,Rune&,Int32&
-System.Private.CoreLib	System.Text	System.Text.Rune	GetRuneAt	System.Text.Rune	2	0,1	input,index	String,Int32
-System.Private.CoreLib	System.Text	System.Text.Rune	IsValid	System.Boolean	1	0	value	Int32
-System.Private.CoreLib	System.Text	System.Text.Rune	IsValid	System.Boolean	1	0	value	UInt32
-System.Private.CoreLib	System.Text	System.Text.Rune	TryCreate	System.Boolean	2	0,1	ch,result	Char,Rune&
-System.Private.CoreLib	System.Text	System.Text.Rune	TryCreate	System.Boolean	3	0,1,2	highSurrogate,lowSurrogate,result	Char,Char,Rune&
-System.Private.CoreLib	System.Text	System.Text.Rune	TryCreate	System.Boolean	2	0,1	value,result	Int32,Rune&
-System.Private.CoreLib	System.Text	System.Text.Rune	TryCreate	System.Boolean	2	0,1	value,result	UInt32,Rune&
-System.Private.CoreLib	System.Text	System.Text.Rune	TryGetRuneAt	System.Boolean	3	0,1,2	input,index,value	String,Int32,Rune&
-System.Private.CoreLib	System.Text	System.Text.Rune	GetNumericValue	System.Double	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	GetUnicodeCategory	System.Globalization.UnicodeCategory	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsControl	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsDigit	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsLetter	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsLetterOrDigit	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsLower	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsNumber	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsPunctuation	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsSeparator	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsSymbol	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsUpper	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	IsWhiteSpace	System.Boolean	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	ToLower	System.Text.Rune	2	0,1	value,culture	Rune,CultureInfo
-System.Private.CoreLib	System.Text	System.Text.Rune	ToLowerInvariant	System.Text.Rune	1	0	value	Rune
-System.Private.CoreLib	System.Text	System.Text.Rune	ToUpper	System.Text.Rune	2	0,1	value,culture	Rune,CultureInfo
-System.Private.CoreLib	System.Text	System.Text.Rune	ToUpperInvariant	System.Text.Rune	1	0	value	Rune
-```
-
 
 外部ライブラリ
 
