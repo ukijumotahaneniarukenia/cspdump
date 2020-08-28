@@ -34,33 +34,13 @@ $ which cspdump
 $ cspdump
 
 
-Default: --internal-lib mode
-
-Option: --property-instance --property-static --method-instance --method-static --internal-lib --external-lib
+Default: --internal-lib mode AND --property-instance mode AND --as-type-list mode
 
 Usage:
 
-CMD: cspdump --external-lib Newtonsoft.Json --method-static
+CMD: cspdump [--show-assembly-list --show-namespace-list --show-type-list]
 
-or
-
-CMD: cspdump --external-lib Newtonsoft.Json --method-instance
-
-or
-
-CMD: cspdump --external-lib Newtonsoft.Json --property-static
-
-or
-
-CMD: cspdump --external-lib Newtonsoft.Json --property-instance
-
-or
-
-CMD: cspdump --internal-lib System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static
-
-or
-
-CMD: cspdump System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static
+CMD: cspdump [--internal-lib --external-lib] [--as-assembly-list --as-namespace-list --as-type-list]  [Newtonsoft.Json System.DateTime System.Text.NormalizationForm System.Text.Rune] [--property-static --property-instance --method-static --method-instance]
 
 
 ```
@@ -70,53 +50,53 @@ CMD: cspdump System.DateTime System.Text.NormalizationForm System.Text.Rune --me
 
 ```
 
-$ dotnet run --show-assembly-list
+$ cspdump --show-assembly-list
 
-$ dotnet run --as-assembly-list System.Collections System.Linq
+$ cspdump --as-assembly-list System.Collections System.Linq
 
-$ dotnet run --as-assembly-list System.Collections
+$ cspdump --as-assembly-list System.Collections
 
-$ dotnet run --as-assembly-list System.Collections --method-static
+$ cspdump --as-assembly-list System.Collections --method-static
 
-$ dotnet run --as-assembly-list System.Collections --method-instance
+$ cspdump --as-assembly-list System.Collections --method-instance
 
-$ dotnet run --as-assembly-list System.Collections --property-static
+$ cspdump --as-assembly-list System.Collections --property-static
 
-$ dotnet run --as-assembly-list System.Collections --property-instance
+$ cspdump --as-assembly-list System.Collections --property-instance
 
-$ dotnet run --as-assembly-list System.Console System.Collections --property-instance
-
-
-
-$ dotnet run --show-namespace-list
-
-$ dotnet run --as-namespace-list System.Collections.Generic
-
-$ dotnet run --as-namespace-list System.Collections.Generic --method-static
-
-$ dotnet run --as-namespace-list System.Collections.Generic --method-instance
-
-$ dotnet run --as-namespace-list System.Collections.Generic --property-static
-
-$ dotnet run --as-namespace-list System.Collections.Generic --property-instance
-
-$ dotnet run --as-namespace-list System.Text.RegularExpressions System.Text.Unicode System.Globalization --property-instance
+$ cspdump --as-assembly-list System.Console System.Collections --property-instance
 
 
 
-$ dotnet run --show-type-list
+$ cspdump --show-namespace-list
 
-$ dotnet run --as-type-list System.Text.Rune
+$ cspdump --as-namespace-list System.Collections.Generic
 
-$ dotnet run --as-type-list System.Text.Rune --method-static
+$ cspdump --as-namespace-list System.Collections.Generic --method-static
 
-$ dotnet run --as-type-list System.Text.Rune --method-instance
+$ cspdump --as-namespace-list System.Collections.Generic --method-instance
 
-$ dotnet run --as-type-list System.Text.Rune --property-static
+$ cspdump --as-namespace-list System.Collections.Generic --property-static
 
-$ dotnet run --as-type-list System.Text.Rune --property-instance
+$ cspdump --as-namespace-list System.Collections.Generic --property-instance
 
-$ dotnet run --as-type-list System.Text.Rune System.TimeZone --property-instance
+$ cspdump --as-namespace-list System.Text.RegularExpressions System.Text.Unicode System.Globalization --property-instance
+
+
+
+$ cspdump --show-type-list
+
+$ cspdump --as-type-list System.Text.Rune
+
+$ cspdump --as-type-list System.Text.Rune --method-static
+
+$ cspdump --as-type-list System.Text.Rune --method-instance
+
+$ cspdump --as-type-list System.Text.Rune --property-static
+
+$ cspdump --as-type-list System.Text.Rune --property-instance
+
+$ cspdump --as-type-list System.Text.Rune System.TimeZone --property-instance
 
 ```
 
@@ -124,10 +104,44 @@ $ dotnet run --as-type-list System.Text.Rune System.TimeZone --property-instance
 
 分析用のプロジェクトを作成し、分析対象のパッケージをダウンロードしてきてから実行
 
-CMD
+PRE
 
 ```
-cspdump --external-lib Newtonsoft.Json --property-static
+$ mkdir $HOME/wrksp
+
+$ cd $HOME/wrksp
+
+$ dotnet new console
+
+$ dotnet add package RestSharp --version 106.11.5-alpha.0.18
+```
+
+CMD
+
+うまく拾えんときは3つ試して、出てきたやつから逆引きし始める
+
+```
+$ cspdump --external-lib --as-type-list RestSharp
+
+$ cspdump --external-lib --as-namespace-list RestSharp
+
+$ cspdump --external-lib --as-assembly-list RestSharp
+
+$ dotnet run --external-lib --as-namespace-list RestSharp --method-static
+
+$ dotnet run --external-lib --as-namespace-list RestSharp --method-instance
+
+$ dotnet run --external-lib --as-namespace-list RestSharp --property-static
+
+$ dotnet run --external-lib --as-namespace-list RestSharp --property-instance
+
+$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
+
+$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --method-static
+
+$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-static
+
+$ dotnet run --external-lib --as-type-list RestSharp.JsonArray RestSharp.JsonObject RestSharp.RestResponse --property-instance
 ```
 
 ERR

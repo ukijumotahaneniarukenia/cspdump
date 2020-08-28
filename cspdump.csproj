@@ -13,6 +13,7 @@
     <PackageReference Include="jQuery" Version="3.5.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0-preview.8.20407.11" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.5-alpha.0.18" />
   </ItemGroup>
 
 </Project>
