@@ -48,6 +48,7 @@ $ rm -rf $HOME/media/*
 
 $ find -type f | grep -P cspdump | grep Release| grep publish |teip -Gog '(?<!\.[a-zA-Z]+)$|exe$' -- awk '{print $1,1}' | grep 1$| awk '$0=$1' | ruby -F'/' -anle 'p $F[4],$_'|xargs -n2|awk '{print "mkdir -p $HOME/media/"$1"; cp "$2" $HOME/media/"$1"/cspdump-"$1}' | bash
 
+$ chmod -R 755 $HOME/media/*
 
 $ tree -ugh $HOME/media
 /home/aine/media

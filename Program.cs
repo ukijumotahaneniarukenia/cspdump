@@ -18,21 +18,21 @@ namespace app {
         private const string NAMESPACE_NAME = "名前空間名";
         private static string TYPE_NAME = "型名";
         private static List<string> OUTPUT_COMMON_HEADER_LIST = new List<string> {
-            ASSEMBLY_NAME
-            ,NAMESPACE_NAME
-            ,TYPE_NAME
+            ASSEMBLY_NAME,
+            NAMESPACE_NAME,
+            TYPE_NAME
         };
         private static string PROPERTY_OF_STATIC = "スタティックプロパティ名";
         private static string PROPERTY_OF_STATIC_RETURN_TYPE_NAME = "スタティックプロパティ名の戻り値の型名";
         private static List<string> OUTPUT_STATIC_PROPERTY_HEADER_LIST = new List<string> {
-            PROPERTY_OF_STATIC
-            ,PROPERTY_OF_STATIC_RETURN_TYPE_NAME
+            PROPERTY_OF_STATIC,
+            PROPERTY_OF_STATIC_RETURN_TYPE_NAME
         };
         private static string PROPERTY_OF_INSTANCE = "インスタンスプロパティ名";
         private static string PROPERTY_OF_INSTANCE_RETURN_TYPE_NAME = "インスタンスプロパティ名の戻り値の型名";
         private static List<string> OUTPUT_INSTANCE_PROPERTY_HEADER_LIST = new List<string> {
-            PROPERTY_OF_INSTANCE
-            ,PROPERTY_OF_INSTANCE_RETURN_TYPE_NAME
+            PROPERTY_OF_INSTANCE,
+            PROPERTY_OF_INSTANCE_RETURN_TYPE_NAME
         };
         private static string METHOD_OF_STATIC_NAME = "スタティックメソッド名";
         private static string METHOD_OF_STATIC_RETURN_TYPE_NAME = "スタティックメソッドの戻り値の型名";
@@ -41,12 +41,12 @@ namespace app {
         private static string METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME = "スタティックメソッドの仮引数の変数名";
         private static string METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME = "スタティックメソッドの仮引数の型名";
         private static List<string> OUTPUT_STATIC_METHOD_HEADER_LIST = new List<string> {
-            METHOD_OF_STATIC_NAME
-            ,METHOD_OF_STATIC_RETURN_TYPE_NAME
-            ,METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT
-            ,METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO
-            ,METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME
-            ,METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME
+            METHOD_OF_STATIC_NAME,
+            METHOD_OF_STATIC_RETURN_TYPE_NAME,
+            METHOD_OF_STATIC_PHONY_ARGUMENT_COUNT,
+            METHOD_OF_STATIC_PHONY_ARGUMENT_POSITION_NO,
+            METHOD_OF_STATIC_PHONY_ARGUMENT_VARIABLE_NAME,
+            METHOD_OF_STATIC_PHONY_ARGUMENT_RETURN_TYPE_NAME
         };
         private static string METHOD_OF_INSTANCE_NAME = "インスタンスメソッド名";
         private static string METHOD_OF_INSTANCE_RETURN_TYPE_NAME = "インスタンスメソッドの戻り値の型名";
@@ -55,16 +55,20 @@ namespace app {
         private static string METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME = "インスタンスメソッドの仮引数の変数名";
         private static string METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME = "インスタンスメソッドの仮引数の型名";
         private static List<string> OUTPUT_INSTANCE_METHOD_HEADER_LIST = new List<string> {
-            METHOD_OF_INSTANCE_NAME
-            ,METHOD_OF_INSTANCE_RETURN_TYPE_NAME
-            ,METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT
-            ,METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO
-            ,METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME
-            ,METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME
+            METHOD_OF_INSTANCE_NAME,
+            METHOD_OF_INSTANCE_RETURN_TYPE_NAME,
+            METHOD_OF_INSTANCE_PHONY_ARGUMENT_COUNT,
+            METHOD_OF_INSTANCE_PHONY_ARGUMENT_POSITION_NO,
+            METHOD_OF_INSTANCE_PHONY_ARGUMENT_VARIABLE_NAME,
+            METHOD_OF_INSTANCE_PHONY_ARGUMENT_RETURN_TYPE_NAME
         };
         private const string DEFAULT_NONE_STRING_VALUE = "ないよーん";
         private static int DEFAULT_NONE_INT_VALUE = 0;
         private static List<string> DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
+        private const string OPTION_SHOW_TYPE_LIST = "--show-type-list";
+        private const string OPTION_SHOW_NAMESPACE_LIST = "--show-namespace-list";
+        private const string OPTION_SHOW_ASSEMBLY_LIST = "--show-assembly-list";
+        private static string DEFAULT_SHOW_LIST = "";
         private const string OPTION_INTERNAL_LIB = "--internal-lib";
         private const string OPTION_EXTERNAL_LIB = "--external-lib";
         private static string DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
@@ -75,12 +79,15 @@ namespace app {
         private static string DEFAULT_OPTION_VALUE = OPTION_PROPERTY_INSTANCE;
 
         private static List<string> OPTION_LIST = new List<string> {
-            OPTION_PROPERTY_INSTANCE
-            ,OPTION_PROPERTY_STATIC
-            ,OPTION_METHOD_INSTANCE
-            ,OPTION_METHOD_STATIC
-            ,OPTION_INTERNAL_LIB
-            ,OPTION_EXTERNAL_LIB
+            OPTION_PROPERTY_INSTANCE,
+            OPTION_PROPERTY_STATIC,
+            OPTION_METHOD_INSTANCE,
+            OPTION_METHOD_STATIC,
+            OPTION_INTERNAL_LIB,
+            OPTION_EXTERNAL_LIB,
+            OPTION_SHOW_TYPE_LIST,
+            OPTION_SHOW_NAMESPACE_LIST,
+            OPTION_SHOW_ASSEMBLY_LIST
         };
 
         //クラスのパブリックなスタティックプロパティを取得
@@ -206,7 +213,42 @@ namespace app {
 
         }
 
-        private static Dictionary<string, List<Type>> getStdLibTypeList () {
+        private static HashSet<string> getStdLibAssemblyNameHashSet () {
+            //デフォルトの標準ライブラリのみ
+            HashSet<string> stdlibAssemblyNameHashSet = AppDomain.CurrentDomain.GetAssemblies ().Select (Assembly => Assembly.GetName ().Name).ToHashSet ();
+
+            return stdlibAssemblyNameHashSet;
+        }
+
+        private static HashSet<string> getStdLibNamespaceNameHashSet () {
+            //デフォルトの標準ライブラリのみ
+            HashSet<HashSet<string>> stdLibNamespaceNameHashSet = new HashSet<HashSet<string>> ();
+
+            HashSet<Assembly> stdlibAssemblyHashSet = AppDomain.CurrentDomain.GetAssemblies ().ToHashSet ();
+
+            foreach (Assembly assembly in stdlibAssemblyHashSet) {
+
+                stdLibNamespaceNameHashSet.Add (assembly.GetTypes ().Select (type => type.Namespace).ToHashSet ());
+            }
+
+            return stdLibNamespaceNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
+
+        private static HashSet<string> getStdLibTypeNameHashSet () {
+            //デフォルトの標準ライブラリのみ
+            HashSet<HashSet<string>> stdLibTypeNameHashSet = new HashSet<HashSet<string>> ();
+
+            HashSet<Assembly> stdlibAssemblyList = AppDomain.CurrentDomain.GetAssemblies ().ToHashSet ();
+
+            foreach (Assembly assembly in stdlibAssemblyList) {
+
+                stdLibTypeNameHashSet.Add (assembly.GetTypes ().Select (type => type.Name).ToHashSet ());
+            }
+
+            return stdLibTypeNameHashSet.SelectMany (type => type).ToHashSet (); //flatten
+        }
+
+        private static Dictionary<string, List<Type>> getStdLibAssemblyTypeList () {
             //デフォルトの標準ライブラリのみ
 
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
@@ -225,7 +267,7 @@ namespace app {
             return assemblyTypeDict;
         }
 
-        private static Dictionary<string, List<Type>> getExtLibTypeList (HashSet<string> extLibAssemblyHashSet) {
+        private static Dictionary<string, List<Type>> getExtLibAssemblyTypeList (HashSet<string> extLibAssemblyHashSet) {
             //外部ライブラリ指定
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
 
@@ -261,35 +303,44 @@ namespace app {
                 "or" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR  + "--external-lib Newtonsoft.Json --method-instance" +
+                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --method-instance" +
                 RS +
                 RS +
                 "or" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR  + "--external-lib Newtonsoft.Json --property-static" +
+                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --property-static" +
                 RS +
                 RS +
                 "or" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR  + "--external-lib Newtonsoft.Json --property-instance" +
+                "CMD: " + appName + SEPARATOR + "--external-lib Newtonsoft.Json --property-instance" +
                 RS +
                 RS +
                 "or" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR  + "--internal-lib System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
+                "CMD: " + appName + SEPARATOR + "--internal-lib System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
                 RS +
                 RS +
                 "or" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR  + "System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
+                "CMD: " + appName + SEPARATOR + "System.DateTime System.Text.NormalizationForm System.Text.Rune --method-static" +
                 RS
             );
 
             Environment.Exit (0);
+        }
+
+        private static void outputShowList (HashSet<string> showHashSet) {
+
+            var showSortedHashSet = new SortedSet<string>(showHashSet.Where(item =>item != null).ToHashSet());
+
+            foreach (string item in showSortedHashSet) {
+                Console.WriteLine (item);
+            }
         }
 
         private static void outputHeader (List<string> defaultOutputHeaderList) {
@@ -409,7 +460,7 @@ namespace app {
 
         private static void showInternalLibInfo (string appName, HashSet<string> targetTypeNameHashSet) {
 
-            Dictionary<string, List<Type>> stdLibTypeDict = getStdLibTypeList ();
+            Dictionary<string, List<Type>> stdLibTypeDict = getStdLibAssemblyTypeList ();
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
@@ -417,7 +468,7 @@ namespace app {
             //body
             foreach (string assemblyName in stdLibTypeDict.Keys) {
 
-                List<Type> typeList = stdLibTypeDict[assemblyName].Where(type => targetTypeNameHashSet.Contains(type.FullName)).ToList();
+                List<Type> typeList = stdLibTypeDict[assemblyName].Where (type => targetTypeNameHashSet.Contains (type.FullName)).ToList ();
 
                 foreach (Type type in typeList) {
 
@@ -451,7 +502,7 @@ namespace app {
 
         private static void showExternalLibInfo (string appName, HashSet<string> targetTypeNameHashSet) {
 
-            Dictionary<string, List<Type>> extLibTypeDict = getExtLibTypeList (targetTypeNameHashSet);
+            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetTypeNameHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
@@ -459,7 +510,7 @@ namespace app {
             //body
             foreach (string assemblyName in extLibTypeDict.Keys) {
 
-                List<Type> typeList = extLibTypeDict[assemblyName].Where(type => targetTypeNameHashSet.Contains(type.FullName)).ToList();
+                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetTypeNameHashSet.Contains (type.FullName)).ToList ();
 
                 foreach (Type type in extLibTypeDict[assemblyName]) {
 
@@ -528,6 +579,15 @@ namespace app {
 
                 foreach (string arg in map[1]) {
                     switch (arg) {
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_ASSEMBLY_LIST;
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_NAMESPACE_LIST;
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
+                            break;
                         case OPTION_INTERNAL_LIB:
                             DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
                             break;
@@ -560,6 +620,15 @@ namespace app {
             } else {
                 foreach (string arg in cmdLineArgs) {
                     switch (arg) {
+                        case OPTION_SHOW_ASSEMBLY_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_ASSEMBLY_LIST;
+                            break;
+                        case OPTION_SHOW_NAMESPACE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_NAMESPACE_LIST;
+                            break;
+                        case OPTION_SHOW_TYPE_LIST:
+                            DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
+                            break;
                         case OPTION_INTERNAL_LIB:
                             DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
                             break;
@@ -590,9 +659,32 @@ namespace app {
                 }
             }
 
-            if(targetTypeNameHashSet.Where(e => e.IndexOf("-") == 0).ToList().Count != 0){
+            if (targetTypeNameHashSet.Where (e => e.IndexOf ("-") == 0).ToList ().Count != 0) {
                 //オプション引数が指定したもの以外にマッチした場合は除外
-                Usage(appName);
+                Usage (appName);
+            }
+
+            HashSet<string> showList = null;
+
+            switch (DEFAULT_SHOW_LIST) {
+
+                case OPTION_SHOW_ASSEMBLY_LIST:
+                    showList = getStdLibAssemblyNameHashSet ();
+                    outputShowList(showList);
+                    Environment.Exit(0);
+                    break;
+                case OPTION_SHOW_NAMESPACE_LIST:
+                    showList = getStdLibNamespaceNameHashSet ();
+                    outputShowList(showList);
+                    Environment.Exit(0);
+                    break;
+                case OPTION_SHOW_TYPE_LIST:
+                    showList = getStdLibTypeNameHashSet ();
+                    outputShowList(showList);
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
             }
 
             switch (DEFAULT_PATTERN) {
