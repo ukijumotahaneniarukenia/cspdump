@@ -11,6 +11,7 @@ namespace app {
         private static string SEPARATOR = " ";
         private static string FS = "\t";
         private static char RS = '\n';
+        private static string ITEM_JOINER = ".";
         private static string STRING_JOINER = ",";
         private static string COLUMN_JOINER = "-";
         private static string SUB_GROUP_DIGIT = "{0:000000}";
@@ -287,25 +288,37 @@ namespace app {
         }
 
         private static Dictionary<string, List<Type>> getExtLibAssemblyTypeList (HashSet<string> extLibAssemblyHashSet) {
-
-            //TODO 型名でも名前空間名でもアセンブリ名を逆引きしておく必要がある
-
             //外部ライブラリ指定
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
 
             foreach (string extLibAssembly in extLibAssemblyHashSet) {
 
-                Assembly assembly = Assembly.Load (extLibAssembly);
+                List<string> itemList = extLibAssembly.Split (ITEM_JOINER).ToList ();
 
-                string assemblyName = assembly.GetName ().Name;
+                int itemCnt = itemList.Count;
 
-                List<Type> typeList = assembly.GetTypes ().ToList ();
+                for (int i = 1; i <= itemCnt; i++) {
 
-                assemblyTypeDict.Add (assemblyName, typeList);
+                    string tryLoad = String.Join (ITEM_JOINER, itemList.GetRange (0, i).ToArray ());
+
+                    Assembly assembly = null;
+
+                    try {
+                        assembly = Assembly.Load (tryLoad);
+
+                        string assemblyName = assembly.GetName ().Name;
+
+                        List<Type> typeList = assembly.GetTypes ().ToList ();
+
+                        assemblyTypeDict.Add (assemblyName, typeList);
+
+                    } catch (System.Exception) {
+                        //nothing to do
+                    }
+                }
             }
             return assemblyTypeDict;
         }
-
         private static void Usage (string appName) {
             Console.WriteLine (EMPTY +
                 RS +
@@ -316,10 +329,10 @@ namespace app {
                 "Usage:" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_SHOW_LIST.ToArray ())+"]" +
+                "CMD: " + appName + SEPARATOR + "[" + String.Join (SEPARATOR, OPTION_SHOW_LIST.ToArray ()) + "]" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_MODE_LIST.ToArray ())+"]" + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_AS_LIST.ToArray ())+"]" + SEPARATOR + " ["+String.Join (SEPARATOR, OPTION_EXAMPLE_TYPE_LIST.ToArray ())+"]" + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_FETCH_INFO_LIST.ToArray ())+"]" +
+                "CMD: " + appName + SEPARATOR + "[" + String.Join (SEPARATOR, OPTION_MODE_LIST.ToArray ()) + "]" + SEPARATOR + "[" + String.Join (SEPARATOR, OPTION_AS_LIST.ToArray ()) + "]" + SEPARATOR + " [" + String.Join (SEPARATOR, OPTION_EXAMPLE_TYPE_LIST.ToArray ()) + "]" + SEPARATOR + "[" + String.Join (SEPARATOR, OPTION_FETCH_INFO_LIST.ToArray ()) + "]" +
                 RS
             );
 
@@ -582,17 +595,17 @@ namespace app {
         }
         private static void showExternalLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
-            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+            Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
 
             //filter
-            List<string> assemblyNameList = extLibTypeDict.Keys.Where (assemblyName => targetNameHashSet.Contains (assemblyName)).ToList ();
+            List<string> assemblyNameList = extLibInfoDict.Keys.Where (assemblyName => targetNameHashSet.Contains (assemblyName)).ToList ();
 
             //body
             foreach (string assemblyName in assemblyNameList) {
-                List<Type> typeList = extLibTypeDict[assemblyName];
+                List<Type> typeList = extLibInfoDict[assemblyName];
 
                 foreach (Type type in typeList) {
 
@@ -625,18 +638,18 @@ namespace app {
         }
         private static void showExternalLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
-            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+            Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
 
-            List<string> assemblyNameList = extLibTypeDict.Keys.ToList ();
+            List<string> assemblyNameList = extLibInfoDict.Keys.ToList ();
 
             //body
             foreach (string assemblyName in assemblyNameList) {
 
                 //filter
-                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetNameHashSet.Contains (type.Namespace)).ToList ();
+                List<Type> typeList = extLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.Namespace)).ToList ();
 
                 foreach (Type type in typeList) {
 
@@ -669,18 +682,18 @@ namespace app {
         }
         private static void showExternalLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
-            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+            Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
 
-            List<string> assemblyNameList = extLibTypeDict.Keys.ToList ();
+            List<string> assemblyNameList = extLibInfoDict.Keys.ToList ();
 
             //body
             foreach (string assemblyName in assemblyNameList) {
 
                 //filter
-                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
+                List<Type> typeList = extLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
 
                 foreach (Type type in typeList) {
 
@@ -713,17 +726,17 @@ namespace app {
         }
         private static void showExternalLibInfo (string appName, HashSet<string> targetNameHashSet) {
 
-            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+            Dictionary<string, List<Type>> extLibInfoDict = getExtLibAssemblyTypeList (targetNameHashSet);
 
             //header
             outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
 
             //body
-            foreach (string assemblyName in extLibTypeDict.Keys) {
+            foreach (string assemblyName in extLibInfoDict.Keys) {
 
-                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
+                List<Type> typeList = extLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
 
-                foreach (Type type in extLibTypeDict[assemblyName]) {
+                foreach (Type type in extLibInfoDict[assemblyName]) {
 
                     Dictionary<string, Dictionary<string, string>> summaryDict = null;
 
@@ -946,10 +959,6 @@ namespace app {
                     }
                     break;
                 case OPTION_EXTERNAL_LIB:
-
-                    //ここがみそ 外部ライブラリの場合は振る舞いを変える 知っている情報少ないので、大きく拾う
-                    // DEFAULT_AS_LIST = OPTION_AS_NAMESPACE_LIST;
-
                     switch (DEFAULT_AS_LIST) {
                         case OPTION_AS_ASSEMBLY_LIST:
                             showExternalLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
