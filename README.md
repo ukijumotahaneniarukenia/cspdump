@@ -5,11 +5,11 @@ csharpのメタ定義をTSV形式で標準出力に出力するコマンド
 # インストール
 
 ```
-curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/1-0-0/cspdump-linux-x64 -o $HOME/.local/bin/cspdump
+curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/2-0-0/cspdump-linux-x64 -o $HOME/.local/bin/cspdump
 
-curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/1-0-0/cspdump-osx.10.14-x64 -o cspdump
+curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/2-0-0/cspdump-osx.10.14-x64 -o cspdump
 
-curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/1-0-0/cspdump-win10-x64 -o cspdump.exe
+curl -fsSL https://github.com/ukijumotahaneniarukenia/cspdump/releases/download/2-0-0/cspdump-win10-x64 -o cspdump.exe
 ```
 
 実行権限付与
@@ -40,8 +40,7 @@ Usage:
 
 CMD: cspdump [--show-assembly-list --show-namespace-list --show-type-list]
 
-CMD: cspdump [--internal-lib --external-lib] [--as-assembly-list --as-namespace-list --as-type-list]  [Newtonsoft.Json System.DateTime System.Text.NormalizationForm System.Text.Rune] [--property-static --property-instance --method-static --method-instance]
-
+CMD: cspdump [--internal-lib --external-lib --dll-file-lib] [--as-assembly-list --as-namespace-list --as-type-list]  [Newtonsoft.Json System.DateTime System.Text.NormalizationForm System.Text.Rune /home/aine/.nuget/packages/unity/5.11.7/lib/netcoreapp2.0/Unity.Container.dll Unity.UnityContainer Unity.Events.NamedEventArgs] [--property-static --property-instance --method-static --method-instance]
 
 ```
 
