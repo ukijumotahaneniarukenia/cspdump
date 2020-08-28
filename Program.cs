@@ -67,38 +67,48 @@ namespace app {
         private static List<string> DEFAULT_OUTPUT_HEADER_LIST = OUTPUT_INSTANCE_PROPERTY_HEADER_LIST;
         private const string OPTION_USAGE = "--usage";
         private const string OPTION_HELP = "--help";
-        private const string OPTION_AS_TYPE_LIST = "--as-type-list";
-        private const string OPTION_AS_NAMESPACE_LIST = "--as-namespace-list";
         private const string OPTION_AS_ASSEMBLY_LIST = "--as-assembly-list";
+        private const string OPTION_AS_NAMESPACE_LIST = "--as-namespace-list";
+        private const string OPTION_AS_TYPE_LIST = "--as-type-list";
         private static string DEFAULT_AS_LIST = OPTION_AS_TYPE_LIST;
-        private const string OPTION_SHOW_TYPE_LIST = "--show-type-list";
-        private const string OPTION_SHOW_NAMESPACE_LIST = "--show-namespace-list";
         private const string OPTION_SHOW_ASSEMBLY_LIST = "--show-assembly-list";
+        private const string OPTION_SHOW_NAMESPACE_LIST = "--show-namespace-list";
+        private const string OPTION_SHOW_TYPE_LIST = "--show-type-list";
         private static string DEFAULT_SHOW_LIST = "";
         private const string OPTION_INTERNAL_LIB = "--internal-lib";
         private const string OPTION_EXTERNAL_LIB = "--external-lib";
-        private static string DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
-        private const string OPTION_PROPERTY_INSTANCE = "--property-instance";
+        private static string DEFAULT_MODE = OPTION_INTERNAL_LIB;
         private const string OPTION_PROPERTY_STATIC = "--property-static";
-        private const string OPTION_METHOD_INSTANCE = "--method-instance";
+        private const string OPTION_PROPERTY_INSTANCE = "--property-instance";
         private const string OPTION_METHOD_STATIC = "--method-static";
+        private const string OPTION_METHOD_INSTANCE = "--method-instance";
         private static string DEFAULT_FETCH_INFO = OPTION_PROPERTY_INSTANCE;
-
-        private static List<string> OPTION_LIST = new List<string> {
-            OPTION_PROPERTY_INSTANCE,
-            OPTION_PROPERTY_STATIC,
-            OPTION_METHOD_INSTANCE,
-            OPTION_METHOD_STATIC,
-            OPTION_INTERNAL_LIB,
-            OPTION_EXTERNAL_LIB,
-            OPTION_SHOW_TYPE_LIST,
-            OPTION_SHOW_NAMESPACE_LIST,
-            OPTION_SHOW_ASSEMBLY_LIST,
-            OPTION_AS_TYPE_LIST,
-            OPTION_AS_NAMESPACE_LIST,
-            OPTION_AS_ASSEMBLY_LIST
+        private static List<string> OPTION_EXAMPLE_TYPE_LIST = new List<string> {
+            "Newtonsoft.Json",
+            "System.DateTime",
+            "System.Text.NormalizationForm",
+            "System.Text.Rune"
         };
-
+        private static List<string> OPTION_MODE_LIST = new List<string> {
+            OPTION_INTERNAL_LIB,
+            OPTION_EXTERNAL_LIB
+        };
+        private static List<string> OPTION_AS_LIST = new List<string> {
+            OPTION_AS_ASSEMBLY_LIST,
+            OPTION_AS_NAMESPACE_LIST,
+            OPTION_AS_TYPE_LIST
+        };
+        private static List<string> OPTION_SHOW_LIST = new List<string> {
+            OPTION_SHOW_ASSEMBLY_LIST,
+            OPTION_SHOW_NAMESPACE_LIST,
+            OPTION_SHOW_TYPE_LIST
+        };
+        private static List<string> OPTION_FETCH_INFO_LIST = new List<string> {
+            OPTION_PROPERTY_STATIC,
+            OPTION_PROPERTY_INSTANCE,
+            OPTION_METHOD_STATIC,
+            OPTION_METHOD_INSTANCE
+        };
         //クラスのパブリックなスタティックプロパティを取得
         private static Dictionary<string, Dictionary<string, string>> getPropertyOfStaticSummaryInfoDict (Type type) {
             Dictionary<string, Dictionary<string, string>> propertyOfStaticSummaryInfoDict = new Dictionary<string, Dictionary<string, string>> ();
@@ -277,6 +287,9 @@ namespace app {
         }
 
         private static Dictionary<string, List<Type>> getExtLibAssemblyTypeList (HashSet<string> extLibAssemblyHashSet) {
+
+            //TODO 型名でも名前空間名でもアセンブリ名を逆引きしておく必要がある
+
             //外部ライブラリ指定
             Dictionary<string, List<Type>> assemblyTypeDict = new Dictionary<string, List<Type>> ();
 
@@ -300,15 +313,13 @@ namespace app {
                 "Default: --internal-lib mode AND --property-instance mode AND --as-type-list mode" +
                 RS +
                 RS +
-                "Option: " + String.Join (SEPARATOR, OPTION_LIST.ToArray ()) +
-                RS +
-                RS +
                 "Usage:" +
                 RS +
                 RS +
-                "CMD: " + appName + SEPARATOR + "[--external-lib,--internal-lib]" + SEPARATOR + "[--as-type-list,--as-namespace-list,--as-assembly-list]" + SEPARATOR + " [Newtonsoft.Json,System.DateTime,System.Text.NormalizationForm,System.Text.Rune]" + SEPARATOR + "[--method-static,--method-instance,--property-static,--property-instance]" +
+                "CMD: " + appName + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_SHOW_LIST.ToArray ())+"]" +
                 RS +
                 RS +
+                "CMD: " + appName + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_MODE_LIST.ToArray ())+"]" + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_AS_LIST.ToArray ())+"]" + SEPARATOR + " ["+String.Join (SEPARATOR, OPTION_EXAMPLE_TYPE_LIST.ToArray ())+"]" + SEPARATOR + "["+String.Join (SEPARATOR, OPTION_FETCH_INFO_LIST.ToArray ())+"]" +
                 RS
             );
 
@@ -481,7 +492,6 @@ namespace app {
                 }
             }
         }
-
         private static void showInternalLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
 
             Dictionary<string, List<Type>> stdLibInfoDict = getStdLibAssemblyTypeList ();
@@ -527,6 +537,7 @@ namespace app {
             }
         }
         private static void showInternalLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+
             Dictionary<string, List<Type>> stdLibInfoDict = getStdLibAssemblyTypeList ();
 
             //header
@@ -539,6 +550,137 @@ namespace app {
 
                 //filter
                 List<Type> typeList = stdLibInfoDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
+
+                foreach (Type type in typeList) {
+
+                    Dictionary<string, Dictionary<string, string>> summaryDict = null;
+
+                    switch (DEFAULT_FETCH_INFO) {
+
+                        case OPTION_PROPERTY_STATIC:
+                            summaryDict = getPropertyOfStaticSummaryInfoDict (type);
+                            outputPropertyOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            summaryDict = getPropertyOfInstanceSummaryInfoDict (type);
+                            outputPropertyOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            summaryDict = getMethodOfStaticSummaryInfoDict (type);
+                            outputMethodOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            summaryDict = getMethodOfInstanceSummaryInfoDict (type);
+                            outputMethodOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                }
+            }
+        }
+        private static void showExternalLibFilteredByAssemblyNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+
+            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+
+            //header
+            outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
+
+            //filter
+            List<string> assemblyNameList = extLibTypeDict.Keys.Where (assemblyName => targetNameHashSet.Contains (assemblyName)).ToList ();
+
+            //body
+            foreach (string assemblyName in assemblyNameList) {
+                List<Type> typeList = extLibTypeDict[assemblyName];
+
+                foreach (Type type in typeList) {
+
+                    Dictionary<string, Dictionary<string, string>> summaryDict = null;
+
+                    switch (DEFAULT_FETCH_INFO) {
+
+                        case OPTION_PROPERTY_STATIC:
+                            summaryDict = getPropertyOfStaticSummaryInfoDict (type);
+                            outputPropertyOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            summaryDict = getPropertyOfInstanceSummaryInfoDict (type);
+                            outputPropertyOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            summaryDict = getMethodOfStaticSummaryInfoDict (type);
+                            outputMethodOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            summaryDict = getMethodOfInstanceSummaryInfoDict (type);
+                            outputMethodOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                }
+            }
+        }
+        private static void showExternalLibFilteredByNamespaceNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+
+            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+
+            //header
+            outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
+
+            List<string> assemblyNameList = extLibTypeDict.Keys.ToList ();
+
+            //body
+            foreach (string assemblyName in assemblyNameList) {
+
+                //filter
+                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetNameHashSet.Contains (type.Namespace)).ToList ();
+
+                foreach (Type type in typeList) {
+
+                    Dictionary<string, Dictionary<string, string>> summaryDict = null;
+
+                    switch (DEFAULT_FETCH_INFO) {
+
+                        case OPTION_PROPERTY_STATIC:
+                            summaryDict = getPropertyOfStaticSummaryInfoDict (type);
+                            outputPropertyOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_PROPERTY_INSTANCE:
+                            summaryDict = getPropertyOfInstanceSummaryInfoDict (type);
+                            outputPropertyOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_STATIC:
+                            summaryDict = getMethodOfStaticSummaryInfoDict (type);
+                            outputMethodOfStaticSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        case OPTION_METHOD_INSTANCE:
+                            summaryDict = getMethodOfInstanceSummaryInfoDict (type);
+                            outputMethodOfInstanceSummaryInfoDict (assemblyName, type, summaryDict);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
+                }
+            }
+        }
+        private static void showExternalLibFilteredByTypeNameListInfo (string appName, HashSet<string> targetNameHashSet) {
+
+            Dictionary<string, List<Type>> extLibTypeDict = getExtLibAssemblyTypeList (targetNameHashSet);
+
+            //header
+            outputHeader (DEFAULT_OUTPUT_HEADER_LIST);
+
+            List<string> assemblyNameList = extLibTypeDict.Keys.ToList ();
+
+            //body
+            foreach (string assemblyName in assemblyNameList) {
+
+                //filter
+                List<Type> typeList = extLibTypeDict[assemblyName].Where (type => targetNameHashSet.Contains (type.FullName)).ToList ();
 
                 foreach (Type type in typeList) {
 
@@ -673,10 +815,10 @@ namespace app {
                             DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
                             break;
                         case OPTION_INTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
+                            DEFAULT_MODE = OPTION_INTERNAL_LIB;
                             break;
                         case OPTION_EXTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_EXTERNAL_LIB;
+                            DEFAULT_MODE = OPTION_EXTERNAL_LIB;
                             break;
                         case OPTION_PROPERTY_STATIC:
                             DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
@@ -729,10 +871,10 @@ namespace app {
                             DEFAULT_SHOW_LIST = OPTION_SHOW_TYPE_LIST;
                             break;
                         case OPTION_INTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_INTERNAL_LIB;
+                            DEFAULT_MODE = OPTION_INTERNAL_LIB;
                             break;
                         case OPTION_EXTERNAL_LIB:
-                            DEFAULT_PATTERN = OPTION_EXTERNAL_LIB;
+                            DEFAULT_MODE = OPTION_EXTERNAL_LIB;
                             break;
                         case OPTION_PROPERTY_STATIC:
                             DEFAULT_FETCH_INFO = OPTION_PROPERTY_STATIC;
@@ -786,7 +928,7 @@ namespace app {
                     break;
             }
 
-            switch (DEFAULT_PATTERN) {
+            switch (DEFAULT_MODE) {
                 case OPTION_INTERNAL_LIB:
                     switch (DEFAULT_AS_LIST) {
                         case OPTION_AS_ASSEMBLY_LIST:
@@ -804,7 +946,24 @@ namespace app {
                     }
                     break;
                 case OPTION_EXTERNAL_LIB:
-                    showExternalLibInfo (appName, targetNameHashSet);
+
+                    //ここがみそ 外部ライブラリの場合は振る舞いを変える 知っている情報少ないので、大きく拾う
+                    // DEFAULT_AS_LIST = OPTION_AS_NAMESPACE_LIST;
+
+                    switch (DEFAULT_AS_LIST) {
+                        case OPTION_AS_ASSEMBLY_LIST:
+                            showExternalLibFilteredByAssemblyNameListInfo (appName, targetNameHashSet);
+                            break;
+                        case OPTION_AS_NAMESPACE_LIST:
+                            showExternalLibFilteredByNamespaceNameListInfo (appName, targetNameHashSet);
+                            break;
+                        case OPTION_AS_TYPE_LIST:
+                            showExternalLibFilteredByTypeNameListInfo (appName, targetNameHashSet);
+                            break;
+                        default:
+                            Usage (appName);
+                            break;
+                    }
                     break;
                 default:
                     Usage (appName);
